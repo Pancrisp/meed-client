@@ -1,62 +1,54 @@
 <template>
   <div class="container">
     <div class="accounts-list">
+      <AccountCard name="McDuck Vault"/>
+      <AccountCard name="Pennywise Scrooge"/>
       <div class="card">
-        <div class="card-img">
-          <img src="../assets/asx.jpg" alt="">
-        </div>
-        <div class="card-info">
-          <div class="card-name">
-            <p>Balance</p>
-            <p>$1,000,000</p>
-          </div>
-          <div class="card-meta">
-
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-img">
-          <img src="../assets/asx.jpg" alt="">
-        </div>
-        <div class="card-info">
-          <div class="card-name">
-            <p>Balance</p>
-            <p>$1,000,000</p>
-          </div>
-          <div class="card-meta">
-
-          </div>
-        </div>
+        <h3>Create a new trading account</h3>
       </div>
     </div>
   </div>  
 </template>
 
+<script>
+import AccountCard from "@/components/AccountCard.vue";
+
+export default {
+  name: "home",
+  components: {
+    AccountCard
+  }
+}
+</script>
+
 <style lang="scss" scoped>
 .accounts-list {
   margin: 3rem 0;
   display: flex;
+  flex-wrap: wrap;
 }
 
 .card {
   display: flex;
-  flex: 1;
-  margin: 0 1rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-  transition: 200ms ease;
+  min-width: 400px;
+  margin: 1rem;
+  box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.05);
+  transition: 250ms ease;
   border-radius: 4px;
   background: #fff;
   overflow: hidden;
   cursor: pointer;
 
   &:hover {
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.07);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.09);
   }
 }
 
-.card-img img {
-  display: block;
-  height: 200px;
+.card-img {
+  
+  img {
+    display: block;
+    height: 150px;
+  }
 }
 </style>
