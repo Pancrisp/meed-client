@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container center">
     <h1>Create your trading account</h1>
     <form>
       <input type="text" placeholder="Name">
@@ -14,6 +14,7 @@
 </template>
 
 <style lang="scss" scoped>
+
 h1 {
   margin-bottom: 3rem;
 }

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container center">
     <img src="../assets/logo_horizontal.png">
     <form>
       <input type="text" placeholder="Email">
