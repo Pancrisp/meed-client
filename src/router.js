@@ -4,30 +4,16 @@ import Landing from "./views/Landing.vue";
 import About from "./views/About.vue";
 import SignUp from "./views/SignUp.vue";
 import Login from "./views/Login.vue";
+import Home from "./views/Home.vue";
 
 Vue.use(Router);
 
 export default new Router({
   routes: [
-    {
-      path: "/",
-      name: "landing",
-      component: Landing
-    },
-    {
-      path: "/about",
-      name: "about",
-      component: About
-    },
-    {
-      path: "/signup",
-      name: "signup",
-      component: SignUp
-    },
-    {
-      path: "/login",
-      name: "login",
-      component: Login
-    }
+    { path: "/", component: Landing },
+    { path: "/about", component: About },
+    { path: "/signup", component: SignUp },
+    { path: "/login", component: Login },
+    { path: "/home", component: Home }
   ]
 });

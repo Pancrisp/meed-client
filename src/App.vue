@@ -42,6 +42,12 @@ html {
   box-sizing: inherit;
 }
 
+body {
+  margin: 0;
+  background-color: #f4f7fa;
+  height: 100vh;
+}
+
 a {
   text-decoration: none;
 }
