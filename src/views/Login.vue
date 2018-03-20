@@ -1,6 +1,6 @@
 <template>
   <div>
-    <img src="../assets/logo.png">
+    <img src="../assets/logo_horizontal.png">
     <form>
       <input type="text" placeholder="Email">
       <input type="password" placeholder="Password">
@@ -12,7 +12,8 @@
 
 <style lang="scss" scoped>
 img {
-  height: 160px;
+  height: 120px;
+  margin: 1.5rem 0;
 }
 
 input[type="button"] {
