@@ -12,7 +12,7 @@
 
 <style lang="scss">
 #app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  font-family: 'Segoe UI', 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -24,10 +24,47 @@
     margin: 0 1rem;
     font-weight: bold;
     color: #2c3e50;
-    text-decoration: none;
     &.router-link-exact-active {
-      color: #42b983;
+      color: #f4ce42;
     }
   }
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+a {
+  text-decoration: none;
+}
+
+input {
+  display: block;
+  width: 100%;
+  max-width: 400px;
+  margin: 1rem auto;
+  padding: 0.8rem;
+  border: 1px solid #d3d3d3;
+  border-radius: 4px;
+  font-family: 'Segoe UI', 'Avenir', Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+input:focus {
+  outline: 0;
+  border-color: #4261a2;
+}
+
+input::placeholder {
+  color: #afafaf;
 }
 </style>
