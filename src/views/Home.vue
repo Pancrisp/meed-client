@@ -1,9 +1,12 @@
 <template>
   <div class="container">
     <div class="accounts-list">
-      <AccountCard name="McDuck Vault"/>
-      <AccountCard name="Pennywise Scrooge"/>
-      <div class="card">
+      <router-link to="/dashboard">
+        <AccountCard name="McDuck Vault"/>
+      </router-link>
+      <router-link to="/dashboard">
+        <AccountCard name="Pennywise Scrooge"/>
+      </router-link>      <div class="card">
         <h3>Create a new trading account</h3>
       </div>
     </div>
