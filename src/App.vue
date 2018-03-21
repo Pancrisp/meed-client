@@ -77,4 +77,8 @@ input::placeholder {
 .center {
   text-align: center;
 }
+
+.flex {
+  display: flex;
+}
 </style>
