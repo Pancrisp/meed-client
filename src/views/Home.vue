@@ -6,7 +6,8 @@
       </router-link>
       <router-link to="/dashboard">
         <AccountCard name="Pennywise Scrooge"/>
-      </router-link>      <div class="card">
+      </router-link>      
+      <div class="card">
         <h3>Create a new trading account</h3>
       </div>
     </div>
