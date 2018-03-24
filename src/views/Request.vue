@@ -2,7 +2,7 @@
   <div class="container flex">
     <NavApp/>
     <div class="workspace">
-      <h1>Holdings</h1>
+      <h1>Request money</h1>
     </div>
   </div>
 </template>
@@ -11,7 +11,7 @@
 import NavApp from "@/components/NavApp.vue";
 
 export default {
-  name: "holdings",
+  name: "request",
   components: {
     NavApp
   }

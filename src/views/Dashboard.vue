@@ -1,79 +1,38 @@
 <template>
   <div class="container flex">
-    <nav class="menu">
-      <div class="ctg">
-        <h4 class="ctg-title">Browse</h4>
-        <router-link to="/dashboard">Charts</router-link>
-        <router-link to="/holdings">View holdings</router-link>
-        <router-link to="/leaderboard">Leaderboard</router-link>  
-      </div>
-      <div class="ctg">
-        <h4 class="ctg-title">Trade</h4>
-        <router-link to="/buy">Buy</router-link>
-        <router-link to="/sell">Sell</router-link>
-      </div>
-      <div class="ctg">
-        <h4 class="ctg-title">Friends</h4>
-        <router-link to="/sell">Request money</router-link>
-        <router-link to="/buy">Send money</router-link>
-      </div>
-    </nav>
-
-    <main class="dashboard">
+    <NavApp/>
+    <main class="workspace">
       <div class="summary">
         <div class="fields card">Balance</div>
         <div class="fields card">This period change</div>
         <div class="fields card">Net worth</div>
       </div>
       <div class="chart card">Big ass chart</div>
-
     </main>
   </div>
 </template>
 
+<script>
+import NavApp from "@/components/NavApp.vue";
+
+export default {
+  name: "dashboard",
+  components: {
+    NavApp
+  }
+};
+</script>
+
 <style lang="scss" scoped>
-a {
-  display: block;
-  padding: .25rem 0;
-  color: #333;
-  line-height: 1.25;
-  font-weight: 500;
-
-  &.router-link-exact-active {
-    color: #ecb900;
-  }
-
-  &:hover {
-    color: #ecb900;
-  }
-}
-
-.menu {
-  width: 20%;
-}
-
-.dashboard {
+.workspace {
   width: 80%;
-}
-
-.ctg {
-  margin-bottom: 2rem;
-}
-.ctg-title {
-  margin: 0.5rem 0;
-  // color: #4e4e4e;
-  color: lighten(#333, 30%);
-  font-weight: 500;
-  text-align: left;
-  text-transform: uppercase;
-  letter-spacing: 1px;
 }
 
 .grid {
   display: grid;
   grid-template-columns: 20% 1fr 1fr;
   grid-template-rows: auto;
-  grid-template-areas: "nav dashboard bashboard"
+  grid-template-areas: "nav dashboard bashboard";
 }
 
 .chart {
