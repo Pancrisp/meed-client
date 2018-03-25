@@ -1,19 +1,22 @@
 <template>
   <div class="landing">
-    <NavLanding/>
+    <Header/>
     <h1>Landing page</h1>
     <img src="../assets/logo.png">
+    <Footer/>
   </div>
 </template>
 
 <script>
-import NavLanding from '@/components/NavLanding.vue'
+import Header from "@/components/Header.vue";
+import Footer from "@/components/Footer.vue";
 
 export default {
   components: {
-    NavLanding
+    Header,
+    Footer
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>

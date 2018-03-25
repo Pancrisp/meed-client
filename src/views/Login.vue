@@ -1,5 +1,6 @@
 <template>
   <div class="container center">
+    <Header/>
     <img src="../assets/logo_horizontal.png">
     <form>
       <input type="text" placeholder="Email">
@@ -9,6 +10,16 @@
     <p>Don't have an account? <a href="#/signup">Sign up for free</a></p>
   </div>
 </template>
+
+<script>
+import Header from "@/components/Header.vue";
+
+export default {
+  components: {
+    Header
+  }
+};
+</script>
 
 <style lang="scss" scoped>
 img {

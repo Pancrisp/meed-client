@@ -1,5 +1,6 @@
 <template>
   <div class="container center">
+    <Header/>
     <h1>Create your trading account</h1>
     <form>
       <input type="text" placeholder="Name">
@@ -13,8 +14,17 @@
   </div>
 </template>
 
-<style lang="scss" scoped>
+<script>
+import Header from "@/components/Header.vue";
 
+export default {
+  components: {
+    Header
+  }
+};
+</script>
+
+<style lang="scss" scoped>
 h1 {
   margin-bottom: 3rem;
 }

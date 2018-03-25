@@ -9,8 +9,8 @@
 
 <script>
 export default {
-  name: "NavLanding",
-}
+  name: "Header"
+};
 </script>
 
 <style lang="scss" scoped>
