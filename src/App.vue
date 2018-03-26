@@ -1,12 +1,14 @@
 <template>
   <div id="app">
-    <router-view/>
+    <div class="container">
+      <router-view/>
+    </div>
   </div>
 </template>
 
 <style lang="scss">
 #app {
-  font-family: 'Segoe UI', 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Segoe UI", "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
@@ -32,7 +34,9 @@ html {
   box-sizing: border-box;
 }
 
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   box-sizing: inherit;
 }
 
@@ -54,7 +58,7 @@ input {
   padding: 0.8rem;
   border: 1px solid #d3d3d3;
   border-radius: 4px;
-  font-family: 'Segoe UI', 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Segoe UI", "Avenir", Helvetica, Arial, sans-serif;
   font-size: 16px;
   font-weight: 500;
 }

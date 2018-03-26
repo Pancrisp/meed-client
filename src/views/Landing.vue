@@ -1,7 +1,6 @@
 <template>
   <div class="landing">
     <Header/>
-    <h1>Landing page</h1>
     <img src="../assets/logo.png">
     <Footer/>
   </div>
