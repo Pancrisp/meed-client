@@ -28,14 +28,13 @@ export default {
   props: {
     name: String
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
 .card {
   display: flex;
   max-width: 480px;
-  margin: 1rem;
   box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.05);
   transition: 250ms ease;
   border-radius: 4px;
@@ -44,7 +43,7 @@ export default {
   cursor: pointer;
 
   &:hover {
-    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.08);
   }
 }
 
