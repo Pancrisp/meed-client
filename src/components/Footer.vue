@@ -1,5 +1,8 @@
 <template>
   <footer>
+    <div class="container">
+      Hellooooo!
+    </div>
     <p>© 2018 MakeMeMonies. All rights reserved.</p>
   </footer>
 </template>
