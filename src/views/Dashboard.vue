@@ -8,17 +8,20 @@
         <div class="fields card">Net worth</div>
       </div>
       <div class="chart card">Big ass chart</div>
+      <ShareList/>
     </main>
   </div>
 </template>
 
 <script>
 import NavApp from "@/components/NavApp.vue";
+import ShareList from "@/components/ShareList.vue";
 
 export default {
   name: "dashboard",
   components: {
-    NavApp
+    NavApp,
+    ShareList
   }
 };
 </script>
