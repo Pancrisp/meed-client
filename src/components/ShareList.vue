@@ -1,56 +1,73 @@
 <template>
-    <div class="share-list">
-        <ul>
-    <li v-for="share in shares">
-    {{shareListings}}
-    </li>
-</ul>
-<input
-    v-model="newShareListing"
-    @ 
-    placeholder = "List Shares"
-/>
+  <div>
+    <ul>
+      <li v-for="share in shares" :key="share.symbol">
+        {{ share }}
+      </li>
+
+    </ul>
+  </div>
 </template>
 
 <script>
-import ShareItem from "@/components/ShareItem.vue";
-
+import axios from "axios";
 
 export default {
-
-data: {
-newShareListing: '',
-    shareListings: []
-    symbol: "",
-    id: "",
-    name: "",
-    price: ""
-  },
-},
-methods: {
-    addShareListing() {
-        this.shareListings.push (this.newShareListing = '')
+  name: "ShareList",
+  data() {
+    return {
+      shares: [
+        {
+          symbol: "MSFT",
+          price: "90.6900",
+          volume: "31501471",
+          timestamp: "2018-04-09 16:27:42"
+        },
+        {
+          symbol: "FB",
+          price: "157.8500",
+          volume: "34682258",
+          timestamp: "2018-04-09 16:46:39"
+        },
+        {
+          symbol: "AAPL",
+          price: "170.1800",
+          volume: "28971635",
+          timestamp: "2018-04-09 16:14:50"
+        },
+        {
+          symbol: "NVDA",
+          price: "217.4000",
+          volume: "12429542",
+          timestamp: "2018-04-09 17:00:00"
+        },
+        {
+          symbol: "TSLA",
+          price: "289.6300",
+          volume: "10241500",
+          timestamp: "2018-04-09 16:00:00"
         }
-    }
-]);
-
-
-
-//   created: {
-//     loadShares() {
-//       axios.get("http://localhost:5000/shares");
-
-//       // retrieve a list of shares from the API
-//       // loop through each share and save the fields to an object.
-//       // pass the object into the shares array using the push() method
-//       object.id = res.data[0];
-
-
+      ]
+    };
+  },
+  props: {},
+  computed: {},
+  created() {
+    // axios
+    //   .get(
+    //     "https://www.alphavantage.co/query?function=BATCH_STOCK_QUOTES&symbols=MSFT,FB,AAPL,NVDA,TSLA&apikey=Z0JEM1GFP37D111E"
+    //   )
+    //   .then(res => {
+    //     console.log(res);
+    //     this.shares.push(res.data["Stock Quotes"]);
+    //   })
+    //   .catch(err => {
+    //     console.log(err);
+    //   });
+  }
+};
 </script>
 
 <style lang="scss" scoped>
 
 </style>
-
-
-
