@@ -90,4 +90,7 @@ input::placeholder {
 .flex {
   display: flex;
 }
+.px3 {
+  padding: 3rem 0;
+}
 </style>

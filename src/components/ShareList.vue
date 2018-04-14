@@ -107,6 +107,76 @@ export default {
           price: 41.04,
           volume: 1459299,
           timestamp: "2018-04-13 16:00:00"
+        },
+        {
+          symbol: "WOW",
+          name: "Woolworths Group Limited",
+          price: 26.62,
+          volume: 1269465,
+          timestamp: "2018-04-13 16:00:00"
+        },
+        {
+          symbol: "WPL",
+          name: "Woodside Petroleum Limited",
+          price: 30.32,
+          volume: 1255506,
+          timestamp: "2018-04-13 16:00:00"
+        },
+        {
+          symbol: "TCL",
+          name: "Transurban Group",
+          price: 11.18,
+          volume: 2436434,
+          timestamp: "2018-04-13 16:00:00"
+        },
+        {
+          symbol: "SCG",
+          name: "Scentre Group",
+          price: 3.88,
+          volume: 4828362,
+          timestamp: "2018-04-13 16:00:00"
+        },
+        {
+          symbol: "RMD",
+          name: "Resmed Inc.",
+          price: 12.69,
+          volume: 2493978,
+          timestamp: "2018-04-13 16:00:00"
+        },
+        {
+          symbol: "IAG",
+          name: "Insurance Australia Group Limited",
+          price: 7.53,
+          volume: 4038395,
+          timestamp: "2018-04-13 16:00:00"
+        },
+        {
+          symbol: "WFD",
+          name: "Westfield Corporation",
+          price: 8.68,
+          volume: 2900049,
+          timestamp: "2018-04-13 16:00:00"
+        },
+        {
+          symbol: "SUN",
+          name: "Suncorp Group Limited",
+          price: 13.6,
+          volume: 1471270,
+          timestamp: "2018-04-13 16:00:00"
+        },
+        {
+          symbol: "S32",
+          name: "South32 Limited",
+          price: 3.48,
+          volume: 31399213,
+          timestamp: "2018-04-13 16:00:00"
+        },
+        {
+          symbol: "AMC",
+          name: "Amcor Limited",
+          price: 14.06,
+          volume: 1188972,
+          timestamp: "2018-04-13 16:00:00"
         }
       ]
     };
@@ -136,20 +206,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.searchbar {
-  width: 100%;
-  max-width: 100%;
-}
-
 table {
   width: 100%;
   background: #fff;
-  border: 2px solid #afafaf;
-  border-radius: 2px;
+  border: 1px solid #d3d3d3;
+  border-radius: 4px;
 }
 
 th {
   padding: 1rem;
+  text-transform: uppercase;
 }
 
 thead {
@@ -161,6 +227,11 @@ img {
   float: right;
   padding-top: 3px;
   cursor: pointer;
+}
+
+.searchbar {
+  width: 100%;
+  max-width: 100%;
 }
 
 .thead-1 {
