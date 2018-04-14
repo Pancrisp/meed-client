@@ -1,9 +1,17 @@
 <template>
-  <div>
-    <ul v-for="share in shares" :key="share.symbol">
-      <ShareItem :symbol="share.symbol" :name="share.name" :price="share.price" />
-    </ul>
-  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Symbol</th>
+        <th>Price</th>
+        <th>Volume</th>
+      </tr>
+    </thead>
+    <tbody v-for="share in shares" :key="share.symbol">
+      <ShareItem :symbol="share.symbol" :name="share.name" :price="share.price" :volume="share.volume" />
+    </tbody>
+  </table>
 </template>
 
 <script>
@@ -21,43 +29,41 @@ export default {
         {
           symbol: "MSFT",
           name: "Microsoft",
-          price: "90.6900",
+          price: 90.69,
           volume: "31501471",
           timestamp: "2018-04-09 16:27:42"
         },
         {
           symbol: "FB",
           name: "Facebook",
-          price: "157.8500",
+          price: 157.85,
           volume: "34682258",
           timestamp: "2018-04-09 16:46:39"
         },
         {
           symbol: "AAPL",
           name: "Apple",
-          price: "170.1800",
+          price: 170.18,
           volume: "28971635",
           timestamp: "2018-04-09 16:14:50"
         },
         {
           symbol: "NVDA",
-          name: "NVIDIA",
-          price: "217.4000",
+          name: "Nvidia",
+          price: 217.4,
           volume: "12429542",
           timestamp: "2018-04-09 17:00:00"
         },
         {
           symbol: "TSLA",
-          name: "TESLA",
-          price: "289.6300",
+          name: "Tesla",
+          price: 289.63,
           volume: "10241500",
           timestamp: "2018-04-09 16:00:00"
         }
       ]
     };
   },
-  props: {},
-  computed: {},
   created() {
     // axios
     //   .get(
