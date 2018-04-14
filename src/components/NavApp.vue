@@ -2,9 +2,9 @@
   <nav class="menu">
     <div class="ctg">
       <h4 class="ctg-title">Browse</h4>
-      <router-link to="/dashboard">Charts</router-link>
+      <router-link to="/dashboard">Dashboard</router-link>
       <router-link to="/holdings">View holdings</router-link>
-      <router-link to="/leaderboard">Leaderboard</router-link>  
+      <router-link to="/leaderboard">Leaderboard</router-link>
     </div>
     <div class="ctg">
       <h4 class="ctg-title">Trade</h4>
