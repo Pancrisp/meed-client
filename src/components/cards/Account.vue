@@ -1,7 +1,7 @@
 <template>
   <div class="card">
     <div class="card-img">
-      <img src="../assets/uncle_scrooge.png" alt="">
+      <img src="@/assets/uncle_scrooge.png" alt="">
     </div>
     <div class="card-info">
       <div class="card-name">
@@ -24,7 +24,7 @@
 
 <script>
 export default {
-  name: "AccountCard",
+  name: "Account",
   props: {
     name: String
   }

@@ -2,22 +2,22 @@
   <div class="container">
     <div class="accounts-list">
       <router-link to="/dashboard">
-        <AccountCard name="McDuck Vault"/>
+        <Account name="McDuck Vault"/>
       </router-link>
       <router-link to="/dashboard">
-        <AccountCard name="Pennywise Scrooge"/>
+        <Account name="Pennywise Scrooge"/>
       </router-link>
     </div>
-  </div>  
+  </div>
 </template>
 
 <script>
-import AccountCard from "@/components/AccountCard.vue";
+import Account from "@/components/cards/Account.vue";
 
 export default {
   name: "home",
   components: {
-    AccountCard
+    Account
   }
 };
 </script>

@@ -17,7 +17,7 @@
 <script>
 import axios from "axios";
 
-import NavApp from "@/components/NavApp.vue";
+import NavApp from "@/components/partials/NavApp.vue";
 import Summary from "@/components/cards/Summary.vue";
 import ShareList from "@/components/ShareList.vue";
 

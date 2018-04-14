@@ -16,7 +16,7 @@
 
 <script>
 import axios from "axios";
-import Header from "@/components/Header.vue";
+import Header from "@/components/partials/Header.vue";
 
 export default {
   components: {

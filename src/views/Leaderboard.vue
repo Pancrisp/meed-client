@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import NavApp from "@/components/NavApp.vue";
+import NavApp from "@/components/partials/NavApp.vue";
 
 export default {
   name: "leaderboard",
