@@ -1,17 +1,20 @@
 <template>
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Symbol</th>
-        <th>Price</th>
-        <th>Volume</th>
-      </tr>
-    </thead>
-    <tbody v-for="share in shares" :key="share.symbol">
-      <ShareItem :symbol="share.symbol" :name="share.name" :price="share.price" :volume="share.volume" />
-    </tbody>
-  </table>
+  <div class="container">
+    <input type="text" class="searchbar" v-model="search" placeholder="Search for shares...">
+    <table>
+      <thead>
+        <tr>
+          <th class="thead-3">Name</th>
+          <th class="thead-1">Symbol</th>
+          <th class="thead-1">Price</th>
+          <th class="thead-2">Volume</th>
+        </tr>
+      </thead>
+      <tbody v-for="share in filterByName" :key="share.symbol">
+        <ShareItem :symbol="share.symbol" :name="share.name" :price="share.price" :volume="share.volume" />
+      </tbody>
+    </table>
+  </div>
 </template>
 
 <script>
@@ -25,44 +28,58 @@ export default {
   },
   data() {
     return {
+      search: "",
       shares: [
         {
           symbol: "MSFT",
           name: "Microsoft",
           price: 90.69,
-          volume: "31501471",
+          volume: "31,501,471",
           timestamp: "2018-04-09 16:27:42"
         },
         {
           symbol: "FB",
           name: "Facebook",
           price: 157.85,
-          volume: "34682258",
+          volume: "34,682,258",
           timestamp: "2018-04-09 16:46:39"
         },
         {
           symbol: "AAPL",
           name: "Apple",
           price: 170.18,
-          volume: "28971635",
+          volume: "28,971,635",
           timestamp: "2018-04-09 16:14:50"
         },
         {
           symbol: "NVDA",
           name: "Nvidia",
           price: 217.4,
-          volume: "12429542",
+          volume: "12,429,542",
           timestamp: "2018-04-09 17:00:00"
         },
         {
           symbol: "TSLA",
           name: "Tesla",
           price: 289.63,
-          volume: "10241500",
+          volume: "10,241,500",
+          timestamp: "2018-04-09 16:00:00"
+        },
+        {
+          symbol: "CBA",
+          name: "Commonwealth Bank",
+          price: 73.16,
+          volume: "1,252,551",
           timestamp: "2018-04-09 16:00:00"
         }
       ]
     };
+  },
+  computed: {
+    filterByName() {
+      let filter = new RegExp(this.search, "i");
+      return this.shares.filter(el => el.name.match(filter));
+    }
   },
   created() {
     // axios
@@ -81,5 +98,25 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.searchbar {
+  width: 100%;
+  max-width: 100%;
+}
 
+table {
+  width: 100%;
+  text-align: center;
+}
+
+.thead-1 {
+  width: 15%;
+}
+
+.thead-2 {
+  width: 20%;
+}
+
+.thead-3 {
+  width: 50%;
+}
 </style>
