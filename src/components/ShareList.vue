@@ -4,10 +4,18 @@
     <table>
       <thead>
         <tr>
-          <th class="thead-3">Name</th>
-          <th class="thead-1">Symbol</th>
-          <th class="thead-1">Price</th>
-          <th class="thead-2">Volume</th>
+          <th class="thead-3">Name
+            <img @click="sortNameByAlpha" src="../assets/icons8-sort-18.png" alt="sort names by ascending or descending order">
+          </th>
+          <th class="thead-1">Symbol
+            <img @click="sortSymbolByAlpha" src="../assets/icons8-sort-18.png" alt="sort symbols by ascending or descending order">
+          </th>
+          <th class="thead-1">Price
+            <img @click="sortPrice" src="../assets/icons8-sort-18.png" alt="sort prices by ascending or descending order">
+          </th>
+          <th class="thead-2">Volume
+            <img @click="sortVolume" src="../assets/icons8-sort-18.png" alt="sort prices by ascending or descending order">
+          </th>
         </tr>
       </thead>
       <tbody v-for="share in filterByName" :key="share.symbol">
@@ -31,49 +39,91 @@ export default {
       search: "",
       shares: [
         {
-          symbol: "MSFT",
-          name: "Microsoft",
-          price: 90.69,
-          volume: "31,501,471",
-          timestamp: "2018-04-09 16:27:42"
-        },
-        {
-          symbol: "FB",
-          name: "Facebook",
-          price: 157.85,
-          volume: "34,682,258",
-          timestamp: "2018-04-09 16:46:39"
-        },
-        {
-          symbol: "AAPL",
-          name: "Apple",
-          price: 170.18,
-          volume: "28,971,635",
-          timestamp: "2018-04-09 16:14:50"
-        },
-        {
-          symbol: "NVDA",
-          name: "Nvidia",
-          price: 217.4,
-          volume: "12,429,542",
-          timestamp: "2018-04-09 17:00:00"
-        },
-        {
-          symbol: "TSLA",
-          name: "Tesla",
-          price: 289.63,
-          volume: "10,241,500",
-          timestamp: "2018-04-09 16:00:00"
-        },
-        {
           symbol: "CBA",
-          name: "Commonwealth Bank",
+          name: "Commonwealth Bank of Australia",
           price: 73.16,
-          volume: "1,252,551",
-          timestamp: "2018-04-09 16:00:00"
+          volume: 1252551,
+          timestamp: "2018-04-13 16:00:00"
+        },
+        {
+          symbol: "NAB",
+          name: "National Bank Australia",
+          price: 28.52,
+          volume: 4470806,
+          timestamp: "2018-04-13 16:00:00"
+        },
+        {
+          symbol: "WBC",
+          name: "Westpac Banking Corporation",
+          price: 28.89,
+          volume: 2851137,
+          timestamp: "2018-04-13 16:00:00"
+        },
+        {
+          symbol: "ANZ",
+          name: "Australia and New Zealand Banking Group Limited",
+          price: 26.71,
+          volume: 3619196,
+          timestamp: "2018-04-13 16:00:00"
+        },
+        {
+          symbol: "MQG",
+          name: "Macquarie Group Limited",
+          price: 104.21,
+          volume: 430244,
+          timestamp: "2018-04-13 16:00:00"
+        },
+        {
+          symbol: "TLS",
+          name: "Telstra Corporation Limited",
+          price: 3.1,
+          volume: 21590421,
+          timestamp: "2018-04-13 16:00:00"
+        },
+        {
+          symbol: "BHP",
+          name: "BHP Billiton Limited",
+          price: 29.73,
+          volume: 4171387,
+          timestamp: "2018-04-13 16:00:00"
+        },
+        {
+          symbol: "RIO",
+          name: "Rio Tinto Limited",
+          price: 78.21,
+          volume: 2088928,
+          timestamp: "2018-04-13 16:00:00"
+        },
+        {
+          symbol: "CSL",
+          name: "CSL Limited",
+          price: 160.35,
+          volume: 552506,
+          timestamp: "2018-04-13 16:00:00"
+        },
+        {
+          symbol: "WES",
+          name: "Wesfarmers Limited",
+          price: 41.04,
+          volume: 1459299,
+          timestamp: "2018-04-13 16:00:00"
         }
       ]
     };
+  },
+  methods: {
+    sortNameByAlpha() {
+      this.shares.sort((a, b) => (a.name > b.name ? 1 : -1));
+    },
+    sortSymbolByAlpha() {
+      this.shares.sort((a, b) => (a.symbol > b.symbol ? 1 : -1));
+    },
+    sortPrice() {
+      this.shares.sort((a, b) => a.price - b.price);
+    },
+    sortVolume() {
+      this.shares.sort((a, b) => (a.volume > b.volume ? 1 : -1));
+    }
   },
   computed: {
     filterByName() {
@@ -81,19 +131,7 @@ export default {
       return this.shares.filter(el => el.name.match(filter));
     }
   },
-  created() {
-    // axios
-    //   .get(
-    //     "https://www.alphavantage.co/query?function=BATCH_STOCK_QUOTES&symbols=MSFT,FB,AAPL,NVDA,TSLA&apikey=Z0JEM1GFP37D111E"
-    //   )
-    //   .then(res => {
-    //     console.log(res);
-    //     this.shares.push(res.data["Stock Quotes"]);
-    //   })
-    //   .catch(err => {
-    //     console.log(err);
-    //   });
-  }
+  created() {}
 };
 </script>
 
@@ -105,7 +143,24 @@ export default {
 
 table {
   width: 100%;
-  text-align: center;
+  background: #fff;
+  border: 2px solid #afafaf;
+  border-radius: 2px;
+}
+
+th {
+  padding: 1rem;
+}
+
+thead {
+  text-align: left;
+  margin-right: 1rem;
+}
+
+img {
+  float: right;
+  padding-top: 3px;
+  cursor: pointer;
 }
 
 .thead-1 {
