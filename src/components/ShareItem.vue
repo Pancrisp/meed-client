@@ -1,61 +1,36 @@
 <template>
-  <tr>
+  <tr @mouseenter="hover">
     <td>{{ name }}</td>
     <td>{{ symbol }}</td>
     <td>{{ price | currency }}</td>
-    <td>{{ timestamp }}</td>
+    <td class="action">
+      <div class="btn btn-buy" v-if="formBuyOpen" @click="buy">Buy</div>
+      <div class= "buy-share" v-if="formOpen">
+        <form @submit.prevent="buy">
+          <div>
+            <label>Symbol</label>
+            <input type="text" :value="symbol" disabled>
+          </div>
 
-    <div class="containerBuy" id="app">
-        <div class= "buy-share" :class="{'open': formOpen}">
-          <div class="button-copy" v-show="!formBuyOpen" @click="formOpen = true">Buy Share/s</div>
-        <!-- <form @submit = "cancel()"> -->
+          <div>
+            <label>Company Name</label>
+            <input type="text" :value="name" disabled>
+          </div>
 
+          <div>
+            <label>Price</label>
+            <input type="text" :value="price" disabled>
+          </div>
 
-      <div class="containerSell" id="app">
-        <div class= "sell-share" :class="{'open': formOpen}">
-          <div class="button-copy" v-show="!formSellOpen" @click="formOpen = true">Sell Share/s</div>
-        <!-- <form @submit = "cancel()"> -->
+          <div>
+            <label>Quantity</label>
+            <input type="text" v-model="quantity" required>
+          </div>
 
-      <div class="form--field">
-        <label>Company Name</label>
-        <span>{{name}}</span>
-        <class="form--element" name="name" v-model="data.name" placeholder="Company Name">
+          <button type="submit" class="submit-button">Buy</button>
+        </form>
       </div>
-
-      <div class="form--field -short">
-          <label>Symbol</label>
-          <span>{{symbol}}</span>
-          <class="form--element" name="price" v-model="data.price"
-           placeholder="Price"  pattern="\d+(\.\d{2})?">
-        </div>
-
-      <div class="form--field -short">
-          <label>Price</label>
-          <span>{{price}}$</span>
-          <class="form--element" name="price" v-model="data.price"
-           placeholder="Price"  pattern="\d+(\.\d{2})?">
-        </div>
-
-      <div class="form--field">
-        <label>Time Stamp</label>
-        <span>{{timestamp}}</span>
-        <class="form--element" name="timestamp" v-model="data.timestamp" placeholder="Time Stamp">
-      </div>
-
-      <div class="form--field -short">
-        <label>Quantity</label>
-         <input type="number" class="form--element" name="quantity" v-model="data.quantity">
-         <!-- needs to be know to users current share holdings v-model -->
-        <placeholder="Quantity" required="" min="0" max="6" step="1.0">
-      </div>
-
-      <button type="submit" class="submit-button">Buy Share</button>
-      <!-- <div class="cancel">
-      <span @click="cancel()">Cancel</span></div> -->
-
-
-
-    </div>
+    </td>
   </tr>
 </template>
 
@@ -65,10 +40,20 @@ export default {
   data() {
     return {
       formBuyOpen: false,
-      formSellOpen: false
+      formOpen: false,
+      quantity: ""
     };
   },
   props: ["symbol", "name", "price", "timestamp"],
+  methods: {
+    hover() {
+      this.formBuyOpen = !this.formBuyOpen;
+    },
+    buy() {
+      this.formBuyOpen = false;
+      this.formOpen = true;
+    }
+  },
   filters: {
     currency(price) {
       return price.toLocaleString("en-AU", {
@@ -76,35 +61,37 @@ export default {
         currency: "AUD"
       });
     },
-    number(value) {
-      return value.toLocaleString();
+    date(value) {
+      return value.toDateString();
     }
-  },
-  methods: {
-    resetForm: function() {
-      this.data = {
-        symbol: "",
-        name: "",
-        price: "",
-        timestamp: "",
-        quantity: ""
-      };
-    }
-    // cancel: function() {
-    //   this.formOpen = false;
-    //   this.resetForm();
-    // }
   }
 };
 </script>
 
 <style lang="scss" scoped>
-.container {
-  display: flex;
-  width: 100%;
-  height: 100%;
-  justify-content: center;
-  align-items: center;
+tr:hover {
+  background: darken(#fff, 5%);
+}
+
+td {
+  padding: 1rem;
+  font-weight: 500;
+}
+
+.action {
+  padding: 0;
+}
+
+.btn-buy {
+  width: 80px;
+  background: #38be0f;
+  padding: 0.5rem;
+  color: #fff;
+  font-weight: 500;
+  text-align: center;
+  text-transform: uppercase;
+  border-radius: 2px;
+  cursor: pointer;
 }
 
 .buy-share,
@@ -117,23 +104,5 @@ export default {
     height: 398px;
     cursor: default;
   }
-}
-
-html,
-body {
-  height: 100%;
-  margin: 0;
-}
-
-body {
-  font-family: "Open Sans", sans-serif;
-  font-size: 16px;
-  background-color: #f3f4f5;
-  cursor: default;
-}
-
-td {
-  padding: 1rem;
-  font-weight: 500;
 }
 </style>

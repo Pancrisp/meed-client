@@ -16,7 +16,7 @@
         </tr>
       </thead>
       <tbody v-for="share in filterByName" :key="share.symbol">
-        <ShareItem :symbol="share.symbol" :name="share.name" :price="share.price" />
+        <ShareItem :symbol="share.symbol" :name="share.name" :price="share.price" :timestamp="share.date" />
       </tbody>
     </table>
   </div>

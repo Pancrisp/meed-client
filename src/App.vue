@@ -83,6 +83,10 @@ input::placeholder {
   color: #afafaf;
 }
 
+table {
+  border-spacing: 0px;
+}
+
 .center {
   text-align: center;
 }
