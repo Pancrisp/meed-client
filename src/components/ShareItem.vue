@@ -1,35 +1,38 @@
 <template>
-  <tr @mouseenter="hover">
+  <tr>
     <td>{{ name }}</td>
     <td>{{ symbol }}</td>
     <td>{{ price | currency }}</td>
     <td class="action">
       <div class="btn btn-buy" v-if="formBuyOpen" @click="buy">Buy</div>
-      <div class= "buy-share" v-if="formOpen">
-        <form @submit.prevent="buy">
-          <div>
-            <label>Symbol</label>
-            <input type="text" :value="symbol" disabled>
-          </div>
+      <form @submit.prevent="buy" v-if="formOpen">
+        <div>
+          <label>Symbol</label>
+          <input type="text" :value="symbol" disabled>
+        </div>
 
-          <div>
-            <label>Company Name</label>
-            <input type="text" :value="name" disabled>
-          </div>
+        <div>
+          <label>Company Name</label>
+          <input type="text" :value="name" disabled>
+        </div>
 
-          <div>
-            <label>Price</label>
-            <input type="text" :value="price" disabled>
-          </div>
+        <div>
+          <label>Price</label>
+          <input type="text" :value="price" disabled>
+        </div>
 
-          <div>
-            <label>Quantity</label>
-            <input type="text" v-model="quantity" required>
-          </div>
+        <div>
+          <label>Quantity</label>
+          <input type="text" v-model="quantity" required>
+        </div>
 
-          <button type="submit" class="submit-button">Buy</button>
-        </form>
-      </div>
+        <div>
+          <p v-if="quantity > 0">Brokerage: {{ brokerage | currency }}</p>
+          <p v-if="quantity > 0">Total cost: {{ cost | currency }}</p>
+        </div>
+
+        <input type="button" class="btn btn-submit" value="Buy">
+      </form>
     </td>
   </tr>
 </template>
@@ -39,19 +42,24 @@ export default {
   name: "ShareItem",
   data() {
     return {
-      formBuyOpen: false,
+      formBuyOpen: true,
       formOpen: false,
       quantity: ""
     };
   },
   props: ["symbol", "name", "price", "timestamp"],
   methods: {
-    hover() {
-      this.formBuyOpen = !this.formBuyOpen;
-    },
     buy() {
       this.formBuyOpen = false;
       this.formOpen = true;
+    }
+  },
+  computed: {
+    brokerage() {
+      return this.price * this.quantity * 0.01 + 50;
+    },
+    cost() {
+      return this.price * this.quantity * 1.01 + 50;
     }
   },
   filters: {
@@ -69,29 +77,28 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-tr:hover {
-  background: darken(#fff, 5%);
-}
-
 td {
   padding: 1rem;
   font-weight: 500;
 }
 
 .action {
-  padding: 0;
+  padding: 0 1rem;
 }
 
-.btn-buy {
+.btn {
   width: 80px;
-  background: #38be0f;
   padding: 0.5rem;
   color: #fff;
   font-weight: 500;
   text-align: center;
   text-transform: uppercase;
+  border: none;
   border-radius: 2px;
   cursor: pointer;
+}
+.btn-buy {
+  background: #38be0f;
 }
 
 .buy-share,
