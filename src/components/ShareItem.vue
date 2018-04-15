@@ -4,73 +4,34 @@
     <td>{{ symbol }}</td>
     <td>{{ price | currency }}</td>
     <td class="action">
-      <div class="btn btn-buy" v-if="formBuyOpen" @click="buy">Buy</div>
-      <form @submit.prevent="buy" v-if="formOpen">
-        <div>
-          <label>Symbol</label>
-          <input type="text" :value="symbol" disabled>
-        </div>
-
-        <div>
-          <label>Company Name</label>
-          <input type="text" :value="name" disabled>
-        </div>
-
-        <div>
-          <label>Price</label>
-          <input type="text" :value="price" disabled>
-        </div>
-
-        <div>
-          <label>Quantity</label>
-          <input type="text" v-model="quantity" required>
-        </div>
-
-        <div>
-          <p v-if="quantity > 0">Brokerage: {{ brokerage | currency }}</p>
-          <p v-if="quantity > 0">Total cost: {{ cost | currency }}</p>
-        </div>
-
-        <input type="button" class="btn btn-submit" value="Buy">
-      </form>
+      <div class="btn btn-buy" @click="showModal = true">Buy</div>
+      <Modal v-if="showModal" @close="showModal = false"
+      :symbol="symbol" :name="name" :price="price" />
     </td>
   </tr>
 </template>
 
 <script>
+import Modal from "../modals/Modal.vue";
+
 export default {
   name: "ShareItem",
+  components: {
+    Modal
+  },
   data() {
     return {
-      formBuyOpen: true,
-      formOpen: false,
-      quantity: ""
+      showModal: false
     };
   },
   props: ["symbol", "name", "price", "timestamp"],
-  methods: {
-    buy() {
-      this.formBuyOpen = false;
-      this.formOpen = true;
-    }
-  },
-  computed: {
-    brokerage() {
-      return this.price * this.quantity * 0.01 + 50;
-    },
-    cost() {
-      return this.price * this.quantity * 1.01 + 50;
-    }
-  },
+  methods: {},
   filters: {
     currency(price) {
       return price.toLocaleString("en-AU", {
         style: "currency",
         currency: "AUD"
       });
-    },
-    date(value) {
-      return value.toDateString();
     }
   }
 };
@@ -99,6 +60,11 @@ td {
 }
 .btn-buy {
   background: #38be0f;
+}
+.btn-cancel {
+  color: red;
+  border: 1px solid red;
+  background: #fff;
 }
 
 .buy-share,
