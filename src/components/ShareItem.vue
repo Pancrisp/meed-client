@@ -1,14 +1,20 @@
 <template>
   <tr>
-    <div class id = "app">
       <td> {{symbol}} </td>
       <td> {{name}} </td>
       <td> {{price | currency}} </td>
       <td> {{timestamp}} </td>
-      <div class= "buy-share" v-show="!formBuyOpen" @click="formOpen= true"> Buy
+
+      <div class="container" id="app">
+        <div class= "buy-share" :class="{'open': formOpen}">
+          <div class="button-copy" v-show="!formBuyOpen" @click="formOpen = true">Buy Share/s</div>
         <form @submit = "cancel()">
-      <div class= "sell-share" v-show="!formSellOpen" @click="formOpen= true"> Sell
+        </div>
+
+        <div class= "sell-share" :class="{'open': formOpen}">
+          <div class="button-copy" v-show="!formSellOpen" @click="formOpen = true">Sell Share/s</div>
         <form @submit = "cancel()">
+        </div>
       </div>
   </tr>
 
@@ -39,6 +45,25 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+.container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.buy-share, .sell-share {
+  &.open {
+    background-color: #FAFAFA;
+    padding: 18px 32px;
+    border-radius: 5px;
+    width: 420px;
+    height: 398px;
+    cursor: default;
+
 html,
 body {
   height: 100%;
@@ -51,4 +76,5 @@ body {
   background-color: #f3f4f5;
   cursor: default;
 }
+
 </style>
