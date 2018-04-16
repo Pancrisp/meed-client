@@ -1,8 +1,8 @@
 <template>
-  <div class="container flex">
+  <div class="container flex px3">
     <NavApp/>
     <div class="workspace">
-      <h1>Holdings</h1>
+      <h1 class="page-title">Holdings</h1>
     </div>
   </div>
 </template>

@@ -89,6 +89,10 @@ table {
   border-spacing: 0px;
 }
 
+.page-title {
+  margin: 0 0 1rem 0;
+}
+
 .label {
   margin: 0.5rem 0 0 0;
   color: lighten(#333, 30%);

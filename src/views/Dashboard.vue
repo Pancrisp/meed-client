@@ -2,7 +2,7 @@
   <div class="container flex px3">
     <NavApp/>
     <main class="workspace">
-      <h1>Dashboard</h1>
+      <h1 class="page-title">Dashboard</h1>
       <div class="summary">
         <Summary class="summary-card" title="Current balance" :value="balance" />
         <Summary class="summary-card" title="This period change" :value="change" />
@@ -50,10 +50,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-h1 {
-  margin: 0 0 1rem 0;
-}
-
 .workspace {
   width: 80%;
 }
