@@ -64,7 +64,7 @@ a {
 input {
   display: block;
   width: 100%;
-  max-width: 480px;
+  max-width: 400px;
   margin: 1rem auto;
   padding: 0.8rem;
   border: 1px solid #d3d3d3;
