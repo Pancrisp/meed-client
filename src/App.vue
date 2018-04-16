@@ -64,7 +64,7 @@ a {
 input {
   display: block;
   width: 100%;
-  max-width: 400px;
+  max-width: 480px;
   margin: 1rem auto;
   padding: 0.8rem;
   border: 1px solid #d3d3d3;
@@ -85,6 +85,19 @@ input::placeholder {
 
 table {
   border-spacing: 0px;
+}
+
+.label {
+  margin: 0.5rem 0 0 0;
+  color: lighten(#333, 30%);
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.label-data {
+  margin: 0.5rem 0 1rem 0;
 }
 
 .center {
