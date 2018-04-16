@@ -1,8 +1,9 @@
 <template>
   <transition name="modal">
-    <div class="modal-mask">
+    <div class="modal-mask" @click="close" v-show="show">
       <div class="modal-wrapper">
-        <div class="modal-container">
+        <div class="modal-container" @click.stop>
+
           <form class="flex" @submit.prevent="buy">
             <div class="quantity flex-2">
               <div class="quantity-field">
@@ -20,6 +21,7 @@
                   <input type="text" v-model="quantity" @keyup="calcCost" required>
                 </div>
               </div>
+
             </div>
               <div class="pricing flex-1">
                 <div class="pricing-field">
@@ -33,6 +35,7 @@
                 </div>
               </div>
           </form>
+
         </div>
       </div>
     </div>
@@ -50,7 +53,7 @@ export default {
       cost: 0
     };
   },
-  props: ["symbol", "name", "price", "timestamp"],
+  props: ["symbol", "name", "price", "timestamp", "show"],
   methods: {
     close() {
       this.$emit("close");
@@ -58,6 +61,9 @@ export default {
     calcCost() {
       this.brokerage = this.price * this.quantity * 0.01 + 50;
       this.cost = this.price * this.quantity * 1.01 + 50;
+    },
+    buy() {
+      this.close();
     }
   },
   filters: {
@@ -88,7 +94,7 @@ export default {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   display: table;
-  transition: opacity 0.3s ease;
+  transition: opacity 250ms ease;
 }
 
 .modal-wrapper {
@@ -103,7 +109,20 @@ export default {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   border-radius: 2px;
   overflow: hidden;
-  transition: all 300ms ease;
+  transition: all 250ms ease;
+}
+
+.modal-enter {
+  opacity: 0;
+}
+
+.modal-leave-active {
+  opacity: 0;
+}
+
+.modal-enter .modal-container,
+.modal-leave-active .modal-container {
+  transform: scale(1.1);
 }
 
 .quantity {
@@ -132,26 +151,19 @@ export default {
   }
 }
 
-.btn {
+.btn-submit {
   color: #fbab39;
   background: #fff;
-  border: none;
-  border-radius: 2px;
-  text-transform: uppercase;
-  cursor: pointer;
+  transition: all 300ms ease;
+
+  &:hover {
+    transform: scale(1.025);
+  }
 }
 
 input {
   flex: 1;
   margin: 0.5rem 0;
   padding: 0.5rem 1rem;
-}
-
-.flex-1 {
-  flex: 1;
-}
-
-.flex-2 {
-  flex: 2;
 }
 </style>

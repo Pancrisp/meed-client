@@ -5,8 +5,7 @@
     <td>{{ price | currency }}</td>
     <td class="action">
       <div class="btn btn-buy" @click="showModal = true">Buy</div>
-      <Modal v-if="showModal" @close="showModal = false"
-      :symbol="symbol" :name="name" :price="price" />
+      <Modal :show="showModal" @close="showModal = false" :symbol="symbol" :name="name" :price="price"></Modal>
     </td>
   </tr>
 </template>
@@ -52,11 +51,6 @@ td {
   padding: 0.5rem;
   color: #fff;
   font-weight: 500;
-  text-align: center;
-  text-transform: uppercase;
-  border: none;
-  border-radius: 2px;
-  cursor: pointer;
 }
 .btn-buy {
   background: #38be0f;
