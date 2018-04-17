@@ -11,20 +11,19 @@
       <div class="summary flex">
         <div class="card summary-card flex-1">
           <div>
+            <h3 class="label">S&P/ASX 200</h3>
+          </div>
+        </div>
+
+        <div class="card summary-card flex-1">
+          <div>
             <h3 class="label">Top gainers</h3>
           </div>
           <div>
             <h3 class="label">Top losers</h3>
           </div>
         </div>
-
-        <div class="card summary-card flex-1">
-          <div>
-            <h3 class="label">S&P/ASX 200</h3>
-          </div>
-        </div>
       </div>
-
       <ShareList/>
     </main>
   </div>
