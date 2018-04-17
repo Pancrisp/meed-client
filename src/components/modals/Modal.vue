@@ -138,8 +138,8 @@ export default {
 }
 
 .pricing {
-  background: #fbab39;
   padding: 24px 32px;
+  background: #fbab39;
 }
 
 .field {

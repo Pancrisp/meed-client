@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import Modal from "../modals/Modal.vue";
+import Modal from "./modals/Modal.vue";
 
 export default {
   name: "ShareItem",

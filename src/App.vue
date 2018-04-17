@@ -114,6 +114,12 @@ table {
   cursor: pointer;
 }
 
+.card {
+  padding: 12px 16px;
+  background: #fff;
+  border-radius: 2px;
+}
+
 .center {
   text-align: center;
 }
