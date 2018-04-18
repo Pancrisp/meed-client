@@ -2,7 +2,6 @@
   <div class="container flex px3">
     <NavApp/>
     <main class="workspace">
-      <h1 class="page-title">Dashboard</h1>
       <div class="summary">
         <Summary class="summary-card" title="Current balance" :value="balance" />
         <Summary class="summary-card" title="This period change" :value="change" />
@@ -67,10 +66,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.workspace {
-  width: 80%;
-}
-
 .grid {
   display: grid;
   grid-template-columns: 20% 1fr 1fr;

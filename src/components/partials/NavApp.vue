@@ -28,7 +28,7 @@ export default {
 <style lang="scss" scoped>
 a {
   display: block;
-  padding: 0.25rem 0;
+  padding: 4px 0;
   color: #333;
   line-height: 1.25;
   font-weight: 500;
@@ -50,8 +50,7 @@ a {
   margin-bottom: 2rem;
 }
 .ctg-title {
-  margin: 0.5rem 0;
-  // color: #4e4e4e;
+  margin: 0 0 8px 0;
   color: lighten(#333, 30%);
   font-weight: 500;
   text-align: left;

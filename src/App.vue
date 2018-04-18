@@ -103,15 +103,27 @@ table {
 }
 
 .label-data {
-  margin: 0.5rem 0 1rem 0;
+  margin: 8px 0 16px 0;
 }
 
 .btn {
+  padding: 8px;
+  font-family: "Segoe UI", Avenir, Helvetica, Arial, sans-serif;
+  font-weight: 500;
+  background: #fff;
   border: none;
   border-radius: 2px;
   text-align: center;
   text-transform: uppercase;
   cursor: pointer;
+}
+
+.btn-large {
+  width: 240px;
+}
+
+.workspace {
+  width: 80%;
 }
 
 .card {

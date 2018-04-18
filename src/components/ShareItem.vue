@@ -51,9 +51,7 @@ td {
 
 .btn {
   width: 80px;
-  padding: 0.5rem;
   color: #fff;
-  font-weight: 500;
 }
 
 .btn-buy {

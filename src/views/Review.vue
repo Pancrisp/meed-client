@@ -2,10 +2,10 @@
   <div class="container flex px3">
     <NavApp/>
     <div class="workspace">
-      <h1 class="page-title">Account Review</h1>
-      <button class="" @click="showHoldings = true">Current Holdings</button>
-      <button class="" @click="showHistory = true">Transaction History</button>
-
+      <div class="toggle">
+        <button class="btn btn-large" @click="showHoldings = true">Current Holdings</button>
+        <button class="btn btn-large" @click="showHistory = true">Transaction History</button>
+      </div>
       <!-- Current holdings -->
       <div v-if="showHoldings"></div>
       <!-- Transaction history -->
@@ -32,5 +32,22 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.toggle {
+  margin: 0 auto;
+}
 
+.btn {
+  margin-right: 1rem;
+  border: 2px solid #fbab39;
+  border-radius: 4px;
+  transition: background 150ms ease;
+
+  &:last-of-type {
+    margin-right: 0;
+  }
+
+  &:hover {
+    background: #fbab39;
+  }
+}
 </style>
