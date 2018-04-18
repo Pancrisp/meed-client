@@ -5,11 +5,10 @@
     <td>{{ price | currency }}</td>
     <td class="action">
       <div class="btn btn-buy" @click="showModal = true">Buy</div>
-
       <!-- modal that allows users purchase or sell shares -->
       <new-order-modal
         :show="showModal" @close="showModal = false"
-        :symbol="symbol" :name="name" :price="price"
+        :name="name" :price="price"
       ></new-order-modal>
     </td>
   </tr>
@@ -28,8 +27,7 @@ export default {
       showModal: false
     };
   },
-  props: ["symbol", "name", "price", "timestamp"],
-  methods: {},
+  props: ["name", "symbol", "price"],
   filters: {
     currency(price) {
       return price.toLocaleString("en-AU", {

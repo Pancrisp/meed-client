@@ -13,7 +13,7 @@
 <script>
 export default {
   name: "Modal",
-  props: ["symbol", "name", "price", "timestamp", "show"],
+  props: ["show"],
   methods: {
     close() {
       this.$emit("close");

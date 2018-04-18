@@ -10,7 +10,7 @@
         <div class="flex">
           <div class="field">
             <label class="label">Price</label>
-            <input type="text" :value="price" disabled>
+            <input type="text" :value="twoDecimals" disabled>
           </div>
           <div class="field">
             <label class="label">Quantity</label>
@@ -44,23 +44,35 @@ export default {
   },
   data() {
     return {
-      showModal: false,
       quantity: "",
       brokerage: 0,
       cost: 0
     };
   },
-  props: ["symbol", "name", "price", "timestamp", "show"],
+  props: ["name", "price", "show"],
   methods: {
     close() {
       this.$emit("close");
+      this.quantity = "";
+      this.brokerage = 0;
+      this.cost = 0;
     },
     calcCost() {
       this.brokerage = this.price * this.quantity * 0.01 + 50;
       this.cost = this.price * this.quantity * 1.01 + 50;
     },
     buy() {
+      // save transaction details to database
+
       this.close();
+    }
+  },
+  computed: {
+    twoDecimals() {
+      return this.price.toLocaleString("en-AU", {
+        style: "currency",
+        currency: "AUD"
+      });
     }
   },
   filters: {
@@ -70,13 +82,6 @@ export default {
         currency: "AUD"
       });
     }
-  },
-  mounted: function() {
-    document.addEventListener("keydown", e => {
-      if (this.show && e.keyCode == 27) {
-        this.close();
-      }
-    });
   }
 };
 </script>
