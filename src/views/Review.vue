@@ -38,16 +38,21 @@ export default {
 
 .btn {
   margin-right: 1rem;
-  border: 2px solid #fbab39;
+  padding: 16px;
+  color: var(--primary-color);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
   border-radius: 4px;
-  transition: background 150ms ease;
+  box-shadow: inset 0 0 0 1px hsl(40, 100%, 50%);
+  transition: box-shadow 400ms ease;
 
   &:last-of-type {
     margin-right: 0;
   }
 
   &:hover {
-    background: #fbab39;
+    box-shadow: inset 0 0 0 2px var(--primary-color);
   }
 }
 </style>

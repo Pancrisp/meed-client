@@ -22,7 +22,7 @@ export default {
     font-weight: bold;
     color: #2c3e50;
     &.router-link-exact-active {
-      color: #f4ce42;
+      color: var(--primary-color);
     }
   }
 }

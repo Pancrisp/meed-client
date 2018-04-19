@@ -28,17 +28,21 @@ export default {
 <style lang="scss" scoped>
 a {
   display: block;
-  padding: 4px 0;
+  margin-right: 32px;
+  padding: 8px 0 8px 16px;
   color: #333;
   line-height: 1.25;
   font-weight: 500;
 
   &.router-link-exact-active {
-    color: #ecb900;
+    // color: var(--primary-color);
+    background: #fff;
+    box-shadow: inset 4px 0 0 0 var(--primary-color);
   }
 
   &:hover {
-    color: #ecb900;
+    // color: var(--primary-color);
+    background: #fff;
   }
 }
 
