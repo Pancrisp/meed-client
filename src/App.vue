@@ -24,6 +24,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
 }
+
 #nav {
   padding: 30px;
   text-align: center;
@@ -41,6 +42,7 @@ export default {
   max-width: 1200px;
   margin: 0 auto;
 }
+
 html {
   box-sizing: border-box;
 }
@@ -68,7 +70,7 @@ input {
   margin: 1rem auto;
   padding: 0.8rem;
   border: 1px solid #d3d3d3;
-  border-radius: 4px;
+  border-radius: 2px;
   font-family: "Segoe UI", "Avenir", Helvetica, Arial, sans-serif;
   font-size: 16px;
   font-weight: 500;
@@ -87,6 +89,27 @@ table {
   border-spacing: 0px;
 }
 
+.label {
+  margin: 0.5rem 0 0 0;
+  color: lighten(#333, 30%);
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.label-data {
+  margin: 0.5rem 0 1rem 0;
+}
+
+.btn {
+  border: none;
+  border-radius: 2px;
+  text-align: center;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
 .center {
   text-align: center;
 }
@@ -94,6 +117,15 @@ table {
 .flex {
   display: flex;
 }
+
+.flex-1 {
+  flex: 1;
+}
+
+.flex-2 {
+  flex: 2;
+}
+
 .px3 {
   padding: 3rem 0;
 }
