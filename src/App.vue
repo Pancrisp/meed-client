@@ -18,24 +18,23 @@ export default {
 </script>
 
 <style lang="scss">
+:root {
+  --primary-color: hsl(32, 100%, 50%);
+  --primary-dark: hsl(40, 100%, 50%);
+  --secondary-color: hsl(32, 100%, 75%);
+  --shares-green: hsl(120, 50%, 50%);
+  --shares-red: hsl(0, 80%, 50%);
+  --body-copy: hsl(0, 0%, 20%);
+  --label-color: hsl(0, 0%, 50%);
+  // --bg-color: hsl(0, 0%, 95%);
+  --bg-color: hsl(200, 50%, 95%);
+}
+
 #app {
   font-family: "Segoe UI", "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-  text-align: center;
-  a {
-    margin: 0 1rem;
-    font-weight: bold;
-    color: #2c3e50;
-    &.router-link-exact-active {
-      color: #f4ce42;
-    }
-  }
 }
 
 .container {
@@ -55,7 +54,7 @@ html {
 
 body {
   margin: 0;
-  background-color: #f4f7fa;
+  background-color: var(--bg-color);
   height: 100vh;
 }
 
@@ -95,7 +94,7 @@ table {
 
 .label {
   margin: 0.5rem 0 0 0;
-  color: lighten(#333, 30%);
+  color: var(--label-color);
   font-size: 12px;
   font-weight: 500;
   text-transform: uppercase;
