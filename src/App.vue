@@ -26,7 +26,6 @@ export default {
   --shares-red: hsl(0, 80%, 50%);
   --body-copy: hsl(0, 0%, 20%);
   --label-color: hsl(0, 0%, 50%);
-  // --bg-color: hsl(0, 0%, 95%);
   --bg-color: hsl(200, 50%, 95%);
 }
 
