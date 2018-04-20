@@ -9,6 +9,7 @@
       <!-- Current holdings -->
       <div v-if="showHoldings"></div>
       <!-- Transaction history -->
+      <table>
       <thead>
         <tr>
           <th class="thead-1">Date
@@ -28,6 +29,7 @@
           </th>
         </tr>
       </thead>
+      </table>
 
       <div v-if="showHistory"></div>
     </div>
@@ -74,5 +76,22 @@ export default {
   &:hover {
     box-shadow: inset 0 0 0 2px var(--primary-color);
   }
+}
+
+table {
+  width: 100%;
+  background: #fff;
+  border: 1px solid #d3d3d3;
+  border-radius: 4px;
+}
+
+th {
+  padding: 1rem;
+  text-transform: uppercase;
+}
+
+thead {
+  text-align: left;
+  margin-right: 1rem;
 }
 </style>
