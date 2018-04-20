@@ -108,6 +108,13 @@ export default {
   }
 }
 
+.sharesBought,
+.sharesSold {
+  width: 100%;
+  max-width: 100%;
+  background-color: #f4ce42;
+}
+
 table {
   width: 100%;
   background: #fff;
@@ -123,12 +130,5 @@ th {
 thead {
   text-align: left;
   margin-right: 1rem;
-}
-
-.sharesBought,
-.sharesSold {
-  width: 100%;
-  max-width: 100%;
-  background-color: #f4ce42;
 }
 </style>
