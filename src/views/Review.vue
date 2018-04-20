@@ -9,6 +9,26 @@
       <!-- Current holdings -->
       <div v-if="showHoldings"></div>
       <!-- Transaction history -->
+      <thead>
+        <tr>
+          <th class="thead-1">Date
+
+          </th>
+          <th class="thead-2">Company Name
+
+          </th>
+          <th class="thead-3">Quantity
+
+          </th>
+          <th class="thead-4">Share Price
+
+          </th>
+          <th class="thead-5">Cost
+
+          </th>
+        </tr>
+      </thead>
+
       <div v-if="showHistory"></div>
     </div>
   </div>
