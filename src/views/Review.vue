@@ -34,6 +34,15 @@
           </th>
         </tr>
       </thead>
+
+    <!-- <tbody v-for="share in shareList" :key="share.symbol">
+        <share-item
+          :symbol="share.symbol" :name="share.name"
+          :price="share.price" :timestamp="share.date"
+        ></share-item>
+      </tbody> -->
+
+
     </table>
 
     <div class="sharesSold"> Shares Sold
@@ -71,6 +80,7 @@
 
 <script>
 import NavApp from "@/components/partials/NavApp.vue";
+import axios from "axios";
 
 export default {
   name: "Review",
@@ -82,6 +92,18 @@ export default {
       showHoldings: false,
       showHistory: false
     };
+  },
+  created() {
+    axios
+      .get(
+        "https://fierce-lake-99257.herokuapp.com/accounts/5ad01d6025634f0f762aa4dc"
+      )
+      .then(res => {
+        this.transactions = res.data;
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
 };
 </script>
