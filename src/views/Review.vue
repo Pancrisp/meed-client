@@ -9,7 +9,10 @@
       <!-- Current holdings -->
       <div v-if="showHoldings"></div>
       <!-- Transaction history -->
-      <table>
+  <div class = "container">
+    <th class="sharesBought"> Shares Bought
+    </th>
+    <table>
       <thead>
         <tr>
           <th class="thead-1">Date
@@ -29,7 +32,34 @@
           </th>
         </tr>
       </thead>
-      </table>
+    </table>
+
+    <th class="sharesSold"> Shares Sold
+    </th>
+    <table>
+      <thead>
+        <tr>
+          <th class="thead-1">Date
+
+          </th>
+          <th class="thead-2">Company Name
+
+          </th>
+          <th class="thead-3">Quantity
+
+          </th>
+          <th class="thead-4">Share Price
+
+          </th>
+          <th class="thead-5">Cost
+
+          </th>
+        </tr>
+      </thead>
+    </table>
+
+
+  </div>
 
       <div v-if="showHistory"></div>
     </div>
@@ -93,5 +123,12 @@ th {
 thead {
   text-align: left;
   margin-right: 1rem;
+}
+
+.sharesBought,
+.sharesSold {
+  width: 100%;
+  max-width: 100%;
+  background-color: #f4ce42;
 }
 </style>
