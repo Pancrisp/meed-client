@@ -6,7 +6,7 @@ import SignUp from "./views/SignUp.vue";
 import Login from "./views/Login.vue";
 import Home from "./views/Home.vue";
 import Dashboard from "./views/Dashboard.vue";
-import Holdings from "./views/Holdings.vue";
+import Review from "./views/Review.vue";
 import Leaderboard from "./views/Leaderboard.vue";
 import Buy from "./views/Buy.vue";
 import Sell from "./views/Sell.vue";
@@ -24,7 +24,7 @@ export default new Router({
     { path: "/login", component: Login },
     { path: "/home", component: Home },
     { path: "/dashboard", component: Dashboard },
-    { path: "/holdings", component: Holdings },
+    { path: "/review", component: Review },
     { path: "/leaderboard", component: Leaderboard },
     { path: "/buy", component: Buy },
     { path: "/sell", component: Sell },

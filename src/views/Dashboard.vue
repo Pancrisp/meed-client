@@ -2,13 +2,27 @@
   <div class="container flex px3">
     <NavApp/>
     <main class="workspace">
-      <h1>Dashboard</h1>
       <div class="summary">
         <Summary class="summary-card" title="Current balance" :value="balance" />
         <Summary class="summary-card" title="This period change" :value="change" />
         <Summary class="summary-card" title="Net worth" :value="networth" />
       </div>
-      <div class="chart card">Big ass chart</div>
+      <div class="summary flex">
+        <div class="card summary-card flex-1">
+          <div>
+            <h3 class="label">S&P/ASX 200</h3>
+          </div>
+        </div>
+
+        <div class="card summary-card flex-1">
+          <div>
+            <h3 class="label">Top gainers</h3>
+          </div>
+          <div>
+            <h3 class="label">Top losers</h3>
+          </div>
+        </div>
+      </div>
       <ShareList/>
     </main>
   </div>
@@ -32,7 +46,9 @@ export default {
     return {
       balance: 0,
       change: 0,
-      networth: 0
+      networth: 0,
+      gainers: [],
+      losers: []
     };
   },
   created() {
@@ -43,40 +59,18 @@ export default {
         this.networth = res.data.networth;
       })
       .catch(err => {
-        this.errors.push(err);
+        console.log(err);
       });
   }
 };
 </script>
 
 <style lang="scss" scoped>
-h1 {
-  margin: 0 0 1rem 0;
-}
-
-.workspace {
-  width: 80%;
-}
-
 .grid {
   display: grid;
   grid-template-columns: 20% 1fr 1fr;
   grid-template-rows: auto;
   grid-template-areas: "nav dashboard dashboard";
-}
-
-.chart {
-  height: 400px;
-  width: 100%;
-  padding: 10rem;
-  font-weight: 500;
-  font-size: 3rem;
-  text-align: center;
-}
-
-.card {
-  background-color: #afafaf;
-  border-radius: 4px;
 }
 
 .summary {
@@ -90,6 +84,10 @@ h1 {
   &:last-of-type {
     margin: 0;
   }
+}
+
+.label {
+  margin-top: 0;
 }
 
 .fields {

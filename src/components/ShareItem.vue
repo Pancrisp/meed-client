@@ -5,26 +5,29 @@
     <td>{{ price | currency }}</td>
     <td class="action">
       <div class="btn btn-buy" @click="showModal = true">Buy</div>
-      <Modal :show="showModal" @close="showModal = false" :symbol="symbol" :name="name" :price="price"></Modal>
+      <!-- modal that allows users purchase or sell shares -->
+      <new-order-modal
+        :show="showModal" @close="showModal = false"
+        :name="name" :price="price"
+      ></new-order-modal>
     </td>
   </tr>
 </template>
 
 <script>
-import Modal from "../modals/Modal.vue";
+import NewOrderModal from "./modals/NewOrderModal.vue";
 
 export default {
   name: "ShareItem",
   components: {
-    Modal
+    NewOrderModal
   },
   data() {
     return {
       showModal: false
     };
   },
-  props: ["symbol", "name", "price", "timestamp"],
-  methods: {},
+  props: ["name", "symbol", "price"],
   filters: {
     currency(price) {
       return price.toLocaleString("en-AU", {
@@ -48,28 +51,10 @@ td {
 
 .btn {
   width: 80px;
-  padding: 0.5rem;
   color: #fff;
-  font-weight: 500;
-}
-.btn-buy {
-  background: #38be0f;
-}
-.btn-cancel {
-  color: red;
-  border: 1px solid red;
-  background: #fff;
 }
 
-.buy-share,
-.sell-share {
-  &.open {
-    background-color: #fafafa;
-    padding: 18px 32px;
-    border-radius: 5px;
-    width: 420px;
-    height: 398px;
-    cursor: default;
-  }
+.btn-buy {
+  background: #38be0f;
 }
 </style>
