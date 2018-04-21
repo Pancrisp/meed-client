@@ -17,7 +17,7 @@
     <table>
       <thead>
         <tr>
-          <th class="thead-1">ID
+          <th class="thead-1">Date
 
           </th>
           <th class="thead-2">Company Name
@@ -36,10 +36,11 @@
       </thead>
       <tbody>
     <tr v-for="transaction in transactions" :key="transaction._id">
-      <td>{{transaction._id}}</td>
-      <td>{{transaction.quantity}}</td>
+      <td>{{transaction.id}}</td>
       <td>{{transaction.share}}</td>
+      <td>{{transaction.quantity}}</td>
       <td>{{transaction.price}}</td>
+      <td>{{transaction.quantity * transaction.price | currency }}
     </tr>
   </tbody>
     </table>
@@ -50,7 +51,7 @@
     <table>
       <thead>
         <tr>
-          <th class="thead-1">ID
+          <th class="thead-1">Date
           </th>
           <th class="thead-2">Company Name
           </th>
