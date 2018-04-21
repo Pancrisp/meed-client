@@ -3,11 +3,13 @@
     <NavApp/>
     <div class="workspace">
       <div class="toggle">
-        <button class="btn btn-large" @click="showHoldings = true">Current Holdings</button>
-        <button class="btn btn-large" @click="showHistory = true">Transaction History</button>
+        <button class="btn btn-large" :class="{ active: holdingsActive }" @click="holdings">Current Holdings</button>
+        <button class="btn btn-large" :class="{ active: historyActive }" @click="history">Transaction History</button>
       </div>
       <!-- Current holdings -->
-      <div v-if="showHoldings"></div>
+      <div v-if="showHoldings">
+        <share-list></share-list>
+      </div>
       <!-- Transaction history -->
   <div class = "container">
 
@@ -91,7 +93,8 @@ import axios from "axios";
 export default {
   name: "Review",
   components: {
-    NavApp
+    NavApp,
+    ShareList
   },
   data() {
     return {
@@ -140,6 +143,7 @@ export default {
   border-radius: 4px;
   box-shadow: inset 0 0 0 1px hsl(40, 100%, 50%);
   transition: box-shadow 400ms ease;
+  outline: none;
 
   &:last-of-type {
     margin-right: 0;

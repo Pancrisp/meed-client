@@ -1,7 +1,9 @@
 <template>
   <div class="landing">
     <Header/>
-    <img src="../assets/logo.png">
+    <div>
+      <img src="../assets/logo.png">
+    </div>
     <Footer/>
   </div>
 </template>
@@ -17,6 +19,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+img {
+  display: block;
+  margin: 2rem auto;
+}
 </style>
 
