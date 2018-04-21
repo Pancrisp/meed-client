@@ -83,6 +83,7 @@ thead {
 
 th {
   padding: 1rem;
+  color: var(--label-color);
   text-transform: uppercase;
 }
 

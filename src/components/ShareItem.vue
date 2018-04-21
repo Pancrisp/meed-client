@@ -1,14 +1,14 @@
 <template>
   <tr>
-    <td>{{ name }}</td>
-    <td>{{ symbol }}</td>
-    <td>{{ price | currency }}</td>
+    <td>{{ shares.name }}</td>
+    <td>{{ shares.symbol }}</td>
+    <td>{{ shares.price | currency }}</td>
     <td class="action">
       <div class="btn btn-buy" @click="showModal = true">Buy</div>
       <!-- modal that allows users purchase or sell shares -->
       <new-order-modal
         :show="showModal" @close="showModal = false"
-        :name="name" :price="price"
+        :name="shares.name" :price="shares.price"
       ></new-order-modal>
     </td>
   </tr>
@@ -27,7 +27,7 @@ export default {
       showModal: false
     };
   },
-  props: ["name", "symbol", "price"],
+  props: ["shares"],
   filters: {
     currency(price) {
       return price.toLocaleString("en-AU", {

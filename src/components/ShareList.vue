@@ -16,10 +16,7 @@
         </tr>
       </thead>
       <tbody v-for="share in filterByName" :key="share.symbol">
-        <share-item
-          :symbol="share.symbol" :name="share.name"
-          :price="share.price" :timestamp="share.date"
-        ></share-item>
+        <share-item :shares="share"></share-item>
       </tbody>
     </table>
   </div>
@@ -80,6 +77,7 @@ table {
 
 th {
   padding: 1rem;
+  color: var(--label-color);
   text-transform: uppercase;
 }
 
