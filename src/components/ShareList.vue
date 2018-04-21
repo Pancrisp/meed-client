@@ -59,7 +59,7 @@ export default {
   },
   created() {
     axios
-      .get("http://localhost:5000/shares")
+      .get("https://fierce-lake-99257.herokuapp.com/shares")
       .then(res => {
         this.shares = res.data;
       })

@@ -53,7 +53,9 @@ export default {
   },
   created() {
     axios
-      .get("http://localhost:5000/accounts/5ad01d6025634f0f762aa4dc")
+      .get(
+        "https://fierce-lake-99257.herokuapp.com/accounts/5ad01d6025634f0f762aa4dc"
+      )
       .then(res => {
         this.balance = res.data.balance;
         this.networth = res.data.networth;

@@ -32,7 +32,7 @@ export default {
   methods: {
     signUp() {
       axios
-        .post("http://localhost:5000/users/", {
+        .post("https://fierce-lake-99257.herokuapp.com/users", {
           name: this.name,
           email: this.email,
           password: this.password
@@ -40,7 +40,7 @@ export default {
         .then(res => {
           console.log(res);
           console.log(res.data);
-          this.$router.push("/home");
+          this.$router.push("/dashboard");
         })
         .catch(err => {
           console.log(err);

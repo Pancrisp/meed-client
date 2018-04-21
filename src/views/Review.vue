@@ -82,5 +82,6 @@ export default {
 .active {
   color: #fff;
   background: var(--primary-color);
+  box-shadow: none;
 }
 </style>
