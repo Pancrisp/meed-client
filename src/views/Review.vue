@@ -3,12 +3,12 @@
     <NavApp/>
     <div class="workspace">
       <div class="toggle">
-        <button class="btn btn-large" :class="{ active: holdingsActive }" @click="holdings">Current Holdings</button>
-        <button class="btn btn-large" :class="{ active: historyActive }" @click="history">Transaction History</button>
+        <button class="btn btn-large" :class="{ active: holdingsActive }" @click="holdingsToggle">Current Holdings</button>
+        <button class="btn btn-large" :class="{ active: historyActive }" @click="historyToggle">Transaction History</button>
       </div>
       <!-- Current holdings -->
       <div v-if="showHoldings">
-        <share-list></share-list>
+        <user-holdings :holdings="holdings"></user-holdings>
       </div>
       <!-- Transaction history -->
       <div v-if="showHistory">
@@ -19,36 +19,50 @@
 </template>
 
 <script>
+import axios from "axios";
+
 import NavApp from "@/components/partials/NavApp.vue";
-import ShareList from "@/components/ShareList.vue";
+import UserHoldings from "@/components/UserHoldings.vue";
 
 export default {
   name: "Review",
   components: {
     NavApp,
-    ShareList
+    UserHoldings
   },
   data() {
     return {
       holdingsActive: true,
       historyActive: false,
       showHoldings: true,
-      showHistory: false
+      showHistory: false,
+      holdings: [],
+      transactions: []
     };
   },
   methods: {
-    holdings() {
+    holdingsToggle() {
       this.showHoldings = !this.showHoldings;
       this.holdingsActive = !this.holdingsActive;
       this.showHistory = false;
       this.historyActive = false;
     },
-    history() {
+    historyToggle() {
       this.showHistory = !this.showHistory;
       this.historyActive = !this.historyActive;
       this.showHoldings = false;
       this.holdingsActive = false;
     }
+  },
+  created() {
+    axios
+      .get(
+        "https://fierce-lake-99257.herokuapp.com/accounts/5ad01d6025634f0f762aa4dc"
+      )
+      .then(res => {
+        this.holdings = res.data.shares;
+        this.transactions = res.data.transactions;
+      });
   }
 };
 </script>
