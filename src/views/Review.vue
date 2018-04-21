@@ -14,40 +14,6 @@
   <div class = "container">
 
     <div class="sharesBought"> Shares Bought
-          </div>
-
-    <table>
-      <thead>
-        <tr>
-          <th class="thead-1">Date
-
-          </th>
-          <th class="thead-2">Company Name
-
-          </th>
-          <th class="thead-3">Quantity
-
-          </th>
-          <th class="thead-4">Share Price
-
-          </th>
-          <th class="thead-5">Cost
-
-          </th>
-        </tr>
-      </thead>
-
-    <!-- <tbody v-for="share in shareList" :key="share.symbol">
-        <share-item
-          :symbol="share.symbol" :name="share.name"
-          :price="share.price" :timestamp="share.date"
-        ></share-item>
-      </tbody> -->
-
-
-    </table>
-
-    <div class="sharesSold"> Shares Sold
     </div>
 
     <table>
@@ -62,7 +28,7 @@
           <th class="thead-3">Quantity
 
           </th>
-          <th class="thead-4">Share Price
+          <th class="thead-4">Price
 
           </th>
           <th class="thead-5">Cost
@@ -70,6 +36,46 @@
           </th>
         </tr>
       </thead>
+      <tbody>
+    <tr v-for="transaction in transactions" :key="transaction._id">
+      <td>{{transaction.id}}</td>
+      <td>{{transaction.share}}</td>
+      <td>{{transaction.quantity}}</td>
+      <td>{{transaction.price}}</td>
+      <td>{{transaction.quantity * transaction.price | currency }}
+    </tr>
+  </tbody>
+    </table>
+
+    <div class="sharesSold"> Shares Sold
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th class="thead-1">Date
+          </th>
+          <th class="thead-2">Company Name
+          </th>
+          <th class="thead-3">Quantity
+          </th>
+          <th class="thead-4">Price
+          </th>
+          <th class="thead-5">Cost
+          </th>
+        </tr>
+      </thead>
+
+     <tbody>
+    <tr v-for="transaction in transactions" :key="transaction._id">
+      <td>{{transaction.id}}</td>
+      <td>{{transaction.share}}</td>
+      <td>{{transaction.quantity}}</td>
+      <td>{{transaction.price}}</td>
+      <td>{{transaction.quantity * transaction.price | currency }}
+    </tr>
+  </tbody>
+
     </table>
 
 
@@ -191,5 +197,11 @@ tr:nth-child(even) {
 thead {
   text-align: left;
   margin-right: 0.5rem;
+}
+
+td {
+  padding: 0.5rem;
+  font-size: 13px;
+  font-weight: 500;
 }
 </style>
