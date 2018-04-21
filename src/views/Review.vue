@@ -11,77 +11,67 @@
         <user-holdings :holdings="holdings"></user-holdings>
       </div>
       <!-- Transaction history -->
-  <div class = "container">
+      <div v-if="showHistory">
+        <div class="sharesBought">Shares Bought</div>
+        <table>
+          <thead>
+            <tr>
+              <th class="thead-1">Date
 
-    <div class="sharesBought"> Shares Bought
-    </div>
+              </th>
+              <th class="thead-2">Company Name
 
-    <table>
-      <thead>
-        <tr>
-          <th class="thead-1">Date
+              </th>
+              <th class="thead-3">Quantity
 
-          </th>
-          <th class="thead-2">Company Name
+              </th>
+              <th class="thead-4">Price
 
-          </th>
-          <th class="thead-3">Quantity
+              </th>
+              <th class="thead-5">Cost
 
-          </th>
-          <th class="thead-4">Price
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="transaction in transactions" :key="transaction._id">
+              <td>{{transaction.id}}</td>
+              <td>{{transaction.share}}</td>
+              <td>{{transaction.quantity}}</td>
+              <td>{{transaction.price}}</td>
+              <td>{{transaction.quantity * transaction.price | currency }}</td>
+            </tr>
+          </tbody>
+        </table>
 
-          </th>
-          <th class="thead-5">Cost
+        <div class="sharesSold">Shares Sold</div>
+        <table>
+          <thead>
+            <tr>
+              <th class="thead-1">Date
+              </th>
+              <th class="thead-2">Company Name
+              </th>
+              <th class="thead-3">Quantity
+              </th>
+              <th class="thead-4">Price
+              </th>
+              <th class="thead-5">Cost
+              </th>
+            </tr>
+          </thead>
 
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-    <tr v-for="transaction in transactions" :key="transaction._id">
-      <td>{{transaction.id}}</td>
-      <td>{{transaction.share}}</td>
-      <td>{{transaction.quantity}}</td>
-      <td>{{transaction.price}}</td>
-      <td>{{transaction.quantity * transaction.price | currency }}
-    </tr>
-  </tbody>
-    </table>
-
-    <div class="sharesSold"> Shares Sold
-    </div>
-
-    <table>
-      <thead>
-        <tr>
-          <th class="thead-1">Date
-          </th>
-          <th class="thead-2">Company Name
-          </th>
-          <th class="thead-3">Quantity
-          </th>
-          <th class="thead-4">Price
-          </th>
-          <th class="thead-5">Cost
-          </th>
-        </tr>
-      </thead>
-
-     <tbody>
-    <tr v-for="transaction in transactions" :key="transaction._id">
-      <td>{{transaction.id}}</td>
-      <td>{{transaction.share}}</td>
-      <td>{{transaction.quantity}}</td>
-      <td>{{transaction.price}}</td>
-      <td>{{transaction.quantity * transaction.price | currency }}
-    </tr>
-  </tbody>
-
-    </table>
-
-
-  </div>
-
-      <div v-if="showHistory"></div>
+          <tbody>
+            <tr v-for="transaction in transactions" :key="transaction._id">
+              <td>{{transaction.id}}</td>
+              <td>{{transaction.share}}</td>
+              <td>{{transaction.quantity}}</td>
+              <td>{{transaction.price}}</td>
+              <td>{{transaction.quantity * transaction.price | currency }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </template>
@@ -141,7 +131,6 @@ export default {
 }
 
 .btn {
-  margin: 50px;
   margin-right: 1rem;
   padding: 16px;
   color: var(--primary-color);
@@ -162,15 +151,21 @@ export default {
   }
 }
 
+.active {
+  color: #fff;
+  background: var(--primary-color);
+  box-shadow: none;
+}
+
 .sharesBought,
 .sharesSold {
   width: 100%;
   max-width: 100%;
+  margin: 2rem 0 0.5rem 0;
   background-color: #f99f46;
   font-size: 14px;
   font-weight: 500;
   text-transform: uppercase;
-  margin: 10px;
   letter-spacing: 0.5px;
   border-radius: 4px;
   padding: 10px;
@@ -181,7 +176,6 @@ table {
   background: #fff;
   border: 1px solid #d3d3d3;
   border-radius: 4px;
-  margin: 10px;
 }
 
 th {
