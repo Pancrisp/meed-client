@@ -1,13 +1,13 @@
 <template>
   <div class="sharesBought">Shares Bought</div>
-        <table>
+        <table class = "bought">
           <thead>
             <tr>
-              <th class="thead-1">Date </th>
-              <th class="thead-2">Company Name </th>
-              <th class="thead-3">Quantity</th>
-              <th class="thead-4">Price </th>
-              <th class="thead-5">Cost </th>
+              <th class>Date </th>
+              <th class>Company Name </th>
+              <th class>Quantity</th>
+              <th class>Price </th>
+              <th class>Cost </th>
             </tr>
           </thead>
           <tbody>
@@ -21,15 +21,17 @@
           </tbody>
         </table>
 
-        <div class="sharesSold">Shares Sold</div>
-        <table>
+
+  <div class="sharesSold">Shares Sold</div>
+
+        <table class = "sold">
           <thead>
             <tr>
-              <th class="thead-1">Date </th>
-              <th class="thead-2">Company Name </th>
-              <th class="thead-3">Quantity </th>
-              <th class="thead-4">Price </th>
-              <th class="thead-5">Cost </th>
+              <th class=>Date </th>
+              <th class=>Company Name </th>
+              <th class=>Quantity </th>
+              <th class=>Price </th>
+              <th class=>Cost </th>
             </tr>
           </thead>
 
