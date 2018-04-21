@@ -77,6 +77,7 @@ table {
 
 th {
   padding: 1rem;
+  font-weight: 500;
   color: var(--label-color);
   text-transform: uppercase;
 }
