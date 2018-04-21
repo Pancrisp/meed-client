@@ -74,14 +74,6 @@ export default {
         currency: "AUD"
       });
     }
-  },
-  filters: {
-    currency(price) {
-      return price.toLocaleString("en-AU", {
-        style: "currency",
-        currency: "AUD"
-      });
-    }
   }
 };
 </script>

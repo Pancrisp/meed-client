@@ -54,16 +54,8 @@ export default {
         }
       ]
     };
-  },
-  // props: ["holdings"],
-  filters: {
-    currency(price) {
-      return price.toLocaleString("en-AU", {
-        style: "currency",
-        currency: "AUD"
-      });
-    }
   }
+  // props: ["holdings"],
 };
 </script>
 
@@ -83,6 +75,7 @@ thead {
 
 th {
   padding: 1rem;
+  font-weight: 500;
   color: var(--label-color);
   text-transform: uppercase;
 }

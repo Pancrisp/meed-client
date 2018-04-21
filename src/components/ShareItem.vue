@@ -27,15 +27,7 @@ export default {
       showModal: false
     };
   },
-  props: ["shares"],
-  filters: {
-    currency(price) {
-      return price.toLocaleString("en-AU", {
-        style: "currency",
-        currency: "AUD"
-      });
-    }
-  }
+  props: ["shares"]
 };
 </script>
 
