@@ -5,6 +5,11 @@ import store from "./store";
 
 Vue.config.productionTip = false;
 
+// Global filters
+Vue.filter("currency", value => {
+  return value.toLocaleString("en-AU", { style: "currency", currency: "AUD" });
+});
+
 new Vue({
   router,
   store,

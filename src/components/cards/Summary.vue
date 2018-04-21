@@ -16,14 +16,6 @@ export default {
     title: {
       required: true
     }
-  },
-  filters: {
-    currency(value) {
-      return value.toLocaleString("en-AU", {
-        style: "currency",
-        currency: "AUD"
-      });
-    }
   }
 };
 </script>

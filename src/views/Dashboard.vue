@@ -54,7 +54,7 @@ export default {
   created() {
     axios
       .get(
-        "https://fierce-lake-99257.herokuapp.com/accounts/5ad01d6025634f0f762aa4dc"
+        "https://fierce-lake-99257.herokuapp.com/accounts/5adb15fd81c30b4847fdae24"
       )
       .then(res => {
         this.balance = res.data.balance;

@@ -14,7 +14,7 @@
           </div>
           <div class="field">
             <label class="label">Quantity</label>
-            <input type="text" v-model="quantity" @keyup="calcCost" required>
+            <input type="text" v-model.number="quantity" @keyup="calcCost" required>
           </div>
         </div>
 
@@ -70,14 +70,6 @@ export default {
   computed: {
     twoDecimals() {
       return this.price.toLocaleString("en-AU", {
-        style: "currency",
-        currency: "AUD"
-      });
-    }
-  },
-  filters: {
-    currency(price) {
-      return price.toLocaleString("en-AU", {
         style: "currency",
         currency: "AUD"
       });

@@ -94,7 +94,7 @@ table {
 .label {
   margin: 0.5rem 0 0 0;
   color: var(--label-color);
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 1px;
