@@ -11,16 +11,78 @@
         <share-list></share-list>
       </div>
       <!-- Transaction history -->
-      <div v-if="showHistory">
-        <!-- <share-list></share-list> -->
-      </div>
+  <div class = "container">
+
+    <div class="sharesBought"> Shares Bought
+          </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th class="thead-1">Date
+
+          </th>
+          <th class="thead-2">Company Name
+
+          </th>
+          <th class="thead-3">Quantity
+
+          </th>
+          <th class="thead-4">Share Price
+
+          </th>
+          <th class="thead-5">Cost
+
+          </th>
+        </tr>
+      </thead>
+
+    <!-- <tbody v-for="share in shareList" :key="share.symbol">
+        <share-item
+          :symbol="share.symbol" :name="share.name"
+          :price="share.price" :timestamp="share.date"
+        ></share-item>
+      </tbody> -->
+
+
+    </table>
+
+    <div class="sharesSold"> Shares Sold
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th class="thead-1">Date
+
+          </th>
+          <th class="thead-2">Company Name
+
+          </th>
+          <th class="thead-3">Quantity
+
+          </th>
+          <th class="thead-4">Share Price
+
+          </th>
+          <th class="thead-5">Cost
+
+          </th>
+        </tr>
+      </thead>
+    </table>
+
+
+  </div>
+
+      <div v-if="showHistory"></div>
     </div>
   </div>
 </template>
 
 <script>
 import NavApp from "@/components/partials/NavApp.vue";
-import ShareList from "@/components/ShareList.vue";
+import axios from "axios";
 
 export default {
   name: "Review",
@@ -30,25 +92,22 @@ export default {
   },
   data() {
     return {
-      holdingsActive: true,
-      historyActive: false,
-      showHoldings: true,
-      showHistory: false
+      showHoldings: false,
+      showHistory: false,
+      transactions: []
     };
   },
-  methods: {
-    holdings() {
-      this.showHoldings = !this.showHoldings;
-      this.holdingsActive = !this.holdingsActive;
-      this.showHistory = false;
-      this.historyActive = false;
-    },
-    history() {
-      this.showHistory = !this.showHistory;
-      this.historyActive = !this.historyActive;
-      this.showHoldings = false;
-      this.holdingsActive = false;
-    }
+  created() {
+    axios
+      .get(
+        "https://fierce-lake-99257.herokuapp.com/accounts/5ad01d6025634f0f762aa4dc"
+      )
+      .then(res => {
+        this.transactions = res.data.transactions;
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
 };
 </script>
@@ -59,6 +118,7 @@ export default {
 }
 
 .btn {
+  margin: 50px;
   margin-right: 1rem;
   padding: 16px;
   color: var(--primary-color);
@@ -79,9 +139,40 @@ export default {
   }
 }
 
-.active {
-  color: #fff;
-  background: var(--primary-color);
-  box-shadow: none;
+.sharesBought,
+.sharesSold {
+  width: 100%;
+  max-width: 100%;
+  background-color: #f99f46;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  margin: 10px;
+  letter-spacing: 0.5px;
+  border-radius: 4px;
+  padding: 10px;
+}
+
+table {
+  width: 100%;
+  background: #fff;
+  border: 1px solid #d3d3d3;
+  border-radius: 4px;
+  margin: 10px;
+}
+
+th {
+  padding: 0.5rem;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+thead {
+  text-align: left;
+  margin-right: 0.5rem;
 }
 </style>
