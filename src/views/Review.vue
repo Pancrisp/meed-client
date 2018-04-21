@@ -12,12 +12,12 @@
   <div class = "container">
 
     <div class="sharesBought"> Shares Bought
-          </div>
+    </div>
 
     <table>
       <thead>
         <tr>
-          <th class="thead-1">Date
+          <th class="thead-1">ID
 
           </th>
           <th class="thead-2">Company Name
@@ -26,7 +26,7 @@
           <th class="thead-3">Quantity
 
           </th>
-          <th class="thead-4">Share Price
+          <th class="thead-4">Price
 
           </th>
           <th class="thead-5">Cost
@@ -34,15 +34,14 @@
           </th>
         </tr>
       </thead>
-
-    <!-- <tbody v-for="share in shareList" :key="share.symbol">
-        <share-item
-          :symbol="share.symbol" :name="share.name"
-          :price="share.price" :timestamp="share.date"
-        ></share-item>
-      </tbody> -->
-
-
+      <tbody>
+    <tr v-for="transaction in transactions" :key="transaction._id">
+      <td>{{transaction._id}}</td>
+      <td>{{transaction.quantity}}</td>
+      <td>{{transaction.share}}</td>
+      <td>{{transaction.price}}</td>
+    </tr>
+  </tbody>
     </table>
 
     <div class="sharesSold"> Shares Sold
@@ -51,20 +50,15 @@
     <table>
       <thead>
         <tr>
-          <th class="thead-1">Date
-
+          <th class="thead-1">ID
           </th>
           <th class="thead-2">Company Name
-
           </th>
           <th class="thead-3">Quantity
-
           </th>
-          <th class="thead-4">Share Price
-
+          <th class="thead-4">Price
           </th>
           <th class="thead-5">Cost
-
           </th>
         </tr>
       </thead>
@@ -170,5 +164,11 @@ tr:nth-child(even) {
 thead {
   text-align: left;
   margin-right: 0.5rem;
+}
+
+td {
+  padding: 0.5rem;
+  font-size: 13px;
+  font-weight: 500;
 }
 </style>
