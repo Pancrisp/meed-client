@@ -63,6 +63,17 @@
           </th>
         </tr>
       </thead>
+
+     <tbody>
+    <tr v-for="transaction in transactions" :key="transaction._id">
+      <td>{{transaction.id}}</td>
+      <td>{{transaction.share}}</td>
+      <td>{{transaction.quantity}}</td>
+      <td>{{transaction.price}}</td>
+      <td>{{transaction.quantity * transaction.price | currency }}
+    </tr>
+  </tbody>
+
     </table>
 
 
@@ -89,17 +100,26 @@ export default {
       transactions: []
     };
   },
-  created() {
-    axios
-      .get(
-        "https://fierce-lake-99257.herokuapp.com/accounts/5ad01d6025634f0f762aa4dc"
-      )
-      .then(res => {
-        this.transactions = res.data.transactions;
-      })
-      .catch(err => {
-        console.log(err);
+  filters: {
+    currency(price) {
+      return price.toLocaleString("en-AU", {
+        style: "currency",
+        currency: "AUD"
       });
+    },
+
+    created() {
+      axios
+        .get(
+          "https://fierce-lake-99257.herokuapp.com/accounts/5ad01d6025634f0f762aa4dc"
+        )
+        .then(res => {
+          this.transactions = res.data.transactions;
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }
   }
 };
 </script>
