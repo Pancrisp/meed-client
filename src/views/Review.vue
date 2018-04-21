@@ -90,7 +90,8 @@ export default {
   data() {
     return {
       showHoldings: false,
-      showHistory: false
+      showHistory: false,
+      transactions: []
     };
   },
   created() {
@@ -99,7 +100,7 @@ export default {
         "https://fierce-lake-99257.herokuapp.com/accounts/5ad01d6025634f0f762aa4dc"
       )
       .then(res => {
-        this.transactions = res.data;
+        this.transactions = res.data.transactions;
       })
       .catch(err => {
         console.log(err);
