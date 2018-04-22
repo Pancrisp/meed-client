@@ -60,7 +60,7 @@ export default {
   created() {
     axios
       .get(
-        "https://fierce-lake-99257.herokuapp.com/accounts/5adb15fd81c30b4847fdae24"
+        "https://fierce-lake-99257.herokuapp.com/accounts/5adc28bc781b3b03e61a60c9"
       )
       .then(res => {
         this.holdings = res.data.shares;

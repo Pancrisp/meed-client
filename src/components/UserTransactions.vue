@@ -5,18 +5,18 @@
       <thead>
         <tr>
           <th>Date</th>
-          <th>Company Name</th>
+          <th>Name</th>
           <th>Quantity</th>
           <th>Price</th>
-          <th>Cost</th>
+          <th>Value</th>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="transaction in transactions" :key="transaction._id">
-          <td>{{ transaction.date }}</td>
+        <tr v-for="transaction in filterBuyOrders" :key="transaction._id">
+          <td>{{ transaction.date | date }}</td>
           <td>{{ transaction.share }}</td>
           <td>{{ transaction.quantity }}</td>
-          <td>{{ transaction.price }}</td>
+          <td>{{ transaction.price | currency }}</td>
           <td>{{ transaction.quantity * transaction.price | currency }}</td>
         </tr>
       </tbody>
@@ -26,19 +26,19 @@
       <thead>
         <tr>
           <th>Date</th>
-          <th>Company Name</th>
+          <th>Name</th>
           <th>Quantity</th>
           <th>Price</th>
-          <th>Cost</th>
+          <th>Value</th>
         </tr>
       </thead>
 
       <tbody>
-        <tr v-for="transaction in transactions" :key="transaction._id">
-          <td>{{ transaction.date }}</td>
+        <tr v-for="transaction in filterSellOrders" :key="transaction._id">
+          <td>{{ transaction.date | date }}</td>
           <td>{{ transaction.share }}</td>
           <td>{{ transaction.quantity }}</td>
-          <td>{{ transaction.price }}</td>
+          <td>{{ transaction.price | currency }}</td>
           <td>{{ transaction.quantity * transaction.price | currency }}</td>
         </tr>
       </tbody>
@@ -47,15 +47,27 @@
 </template>
 
 <script>
+import format from "date-fns/format";
+
 export default {
   name: "UserTransactions",
   data() {
     return {};
   },
   props: ["transactions"],
+  computed: {
+    filterBuyOrders() {
+      const type = "buy";
+      return this.transactions.filter(el => el.action.match(type));
+    },
+    filterSellOrders() {
+      const type = "sell";
+      return this.transactions.filter(el => el.action.match(type));
+    }
+  },
   filters: {
     date(val) {
-      return val.Date.toLocaleDateString();
+      return format(val, "DD MMM YYYY, h:mm A");
     }
   }
 };
@@ -84,7 +96,7 @@ table {
 }
 
 th {
-  padding: 0.5rem;
+  padding: 0.5rem 1rem;
   font-weight: 500;
 }
 
@@ -93,12 +105,13 @@ tr:nth-child(even) {
 }
 
 thead {
-  text-align: left;
   margin-right: 0.5rem;
+  text-align: left;
+  text-transform: uppercase;
 }
 
 td {
-  padding: 0.5rem;
+  padding: 0.5rem 1rem;
   font-weight: 500;
 }
 </style>
