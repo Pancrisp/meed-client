@@ -13,12 +13,14 @@
       <!-- Transaction history -->
       <div v-if="showHistory">
         <user-transactions :transactions="transactions"></user-transactions>
-
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
 import axios from "axios";
-import transactions from "@/components/UserTransactions.vue";
+import UserTransactions from "@/components/UserTransactions.vue";
 import NavApp from "@/components/partials/NavApp.vue";
 import UserHoldings from "@/components/UserHoldings.vue";
 
