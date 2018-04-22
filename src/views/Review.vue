@@ -6,12 +6,6 @@
         <button class="btn btn-large" :class="{ active: holdingsActive }" @click="holdingsToggle">Current Holdings</button>
         <button class="btn btn-large" :class="{ active: historyActive }" @click="historyToggle">Transaction History</button>
       </div>
-      <div class="filter">
-        <button class="btn btn-default" :class="{ active: allSharesActive }" @click="historyFilter">All Shares</button>
-        <button class="btn btn-default" :class="{ active: sharesBoughtActive }" @click="historyFilter">Shares Bought</button>
-        <button class="btn btn-default" :class="{ active: sharesSoldActive }" @click="historyFilter">Shares Sold</button>
-      </div>
-
       <!-- Current holdings -->
       <div v-if="showHoldings">
         <user-holdings :holdings="holdings"></user-holdings>
@@ -26,9 +20,10 @@
 
 <script>
 import axios from "axios";
-import UserTransactions from "@/components/UserTransactions.vue";
+
 import NavApp from "@/components/partials/NavApp.vue";
 import UserHoldings from "@/components/UserHoldings.vue";
+import UserTransactions from "@/components/UserTransactions.vue";
 
 export default {
   name: "Review",
@@ -43,10 +38,6 @@ export default {
       historyActive: false,
       showHoldings: true,
       showHistory: false,
-
-      allSharesActive: true,
-      sharesBoughtActive: false,
-      sharesSoldActive: false,
 
       holdings: [],
       transactions: []
@@ -64,12 +55,6 @@ export default {
       this.historyActive = !this.historyActive;
       this.showHoldings = false;
       this.holdingsActive = false;
-    },
-    historyFilter() {
-      this.showHistory = !this.showHistory;
-      this.allSharesActive = this.historyActive;
-      this.sharesBoughtActive = false;
-      this.sharesSoldActive = false;
     }
   },
   created() {
