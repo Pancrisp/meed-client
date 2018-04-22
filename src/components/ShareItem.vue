@@ -7,8 +7,7 @@
       <div class="btn btn-buy" @click="showModal = true">Buy</div>
       <!-- modal that allows users purchase or sell shares -->
       <new-order-modal
-        :show="showModal" @close="showModal = false"
-        :name="shares.name" :price="shares.price"
+        :shares="shares" :show="showModal" @close="showModal = false"
       ></new-order-modal>
     </td>
   </tr>
