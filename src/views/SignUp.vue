@@ -32,7 +32,7 @@ export default {
   methods: {
     signUp() {
       axios
-        .post("https://fierce-lake-99257.herokuapp.com/users", {
+        .post("https://fierce-lake-99257.herokuapp.com/users/signup", {
           name: this.name,
           email: this.email,
           password: this.password

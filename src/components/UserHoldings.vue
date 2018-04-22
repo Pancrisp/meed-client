@@ -10,10 +10,10 @@
     </thead>
     <tbody>
       <tr v-for="holding in holdings" :key="holding._id">
-        <td>{{ holding.name }}</td>
-        <td>{{ holding.price | currency }}</td>
+        <td>{{ holding.share.name }}</td>
+        <td>{{ holding.share.price | currency }}</td>
         <td>{{ holding.quantity }}</td>
-        <td>{{ holding.quantity * holding.price | currency }}</td>
+        <td>{{ holding.quantity * holding.share.price | currency }}</td>
       </tr>
     </tbody>
   </table>
