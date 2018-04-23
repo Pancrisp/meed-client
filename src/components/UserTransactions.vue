@@ -1,7 +1,13 @@
 <template>
   <div>
+    <div class="toggleFilter">
+      <button class="btn-filter" :class="{ active: allActive }" @click="allSharesToggle">All Shares</button>
+      <button class="btn-filter" :class="{ active: boughtActive }" @click="boughtSharesToggle">Bought Shares</button>
+      <button class="btn-filter" :class="{ active: soldActive }" @click="soldSharesToggle">Sold Shares</button>
+    </div>
+
     <div class="sharesBought">Shares Bought</div>
-    <table>
+    <table v-if="showAll || showBought">
       <thead>
         <tr>
           <th>Date</th>
@@ -22,7 +28,7 @@
       </tbody>
     </table>
     <div class="sharesSold">Shares Sold</div>
-    <table>
+    <table v-if="showAll || showSold">
       <thead>
         <tr>
           <th>Date</th>
@@ -50,13 +56,31 @@
 export default {
   name: "UserTransactions",
   data() {
-    return {};
+    return {
+      allActive: true,
+      boughtActive: false,
+      soldActive: false,
+      showAll: true,
+      showBought: false,
+      showSold: false
+    };
   },
   props: ["transactions"],
   filters: {
     date(val) {
       return val.Date.toLocaleDateString();
     }
+  },
+  methods: {
+    allSharesToggle() {
+      this.showAll = !this.showAll;
+      this.allActive = !this.allActive;
+      this.showBought = false;
+      this.boughtActive = false;
+      this.showSold = false;
+      this.soldActive = false;
+    },
+    boughtSharesToggle() {}
   }
 };
 </script>
