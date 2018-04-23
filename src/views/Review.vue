@@ -75,8 +75,7 @@ export default {
   margin: 0 auto;
 }
 
-.btn,
-.btn-filter {
+.btn {
   margin-right: 1rem;
   padding: 16px;
   color: var(--primary-color);
