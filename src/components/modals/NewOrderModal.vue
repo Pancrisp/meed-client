@@ -4,7 +4,7 @@
       <div class="quantity flex-2">
         <div class="quantity-field">
           <label class="label">Name</label>
-          <input type="text" :value="name" disabled>
+          <input type="text" :value="shares.name" disabled>
         </div>
 
         <div class="flex">
@@ -27,7 +27,7 @@
           <p class="label-data">{{ cost | currency }}</p>
         </div>
         <div class="pricing-field">
-          <input type="button" class="btn btn-submit" value="Buy">
+          <input type="button" class="btn btn-submit" value="Buy" @click="buy">
         </div>
       </div>
     </form>
@@ -35,6 +35,8 @@
 </template>
 
 <script>
+import axios from "axios";
+
 import Modal from "./Modal.vue";
 
 export default {
@@ -49,7 +51,7 @@ export default {
       cost: 0
     };
   },
-  props: ["name", "price", "show"],
+  props: ["shares", "show"],
   methods: {
     close() {
       this.$emit("close");
@@ -58,18 +60,29 @@ export default {
       this.cost = 0;
     },
     calcCost() {
-      this.brokerage = this.price * this.quantity * 0.01 + 50;
-      this.cost = this.price * this.quantity * 1.01 + 50;
+      this.brokerage = this.shares.price * this.quantity * 0.01 + 50;
+      this.cost = this.shares.price * this.quantity * 1.01 + 50;
     },
     buy() {
-      // save transaction details to database
+      axios
+        .post("https://fierce-lake-99257.herokuapp.com/accounts/buy", {
+          accountId: "5adc38024e5991001583895d",
+          symbol: this.shares.symbol,
+          quantity: this.quantity
+        })
+        .then(res => {
+          console.log(res);
 
-      this.close();
+          if (res.status == 201) {
+            this.close();
+            this.$router.push("/review");
+          }
+        });
     }
   },
   computed: {
     twoDecimals() {
-      return this.price.toLocaleString("en-AU", {
+      return this.shares.price.toLocaleString("en-AU", {
         style: "currency",
         currency: "AUD"
       });

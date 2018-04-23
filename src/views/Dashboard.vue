@@ -45,20 +45,19 @@ export default {
   data() {
     return {
       balance: 0,
-      change: 0,
       networth: 0,
-      gainers: [],
-      losers: []
+      change: 0
     };
   },
   created() {
     axios
       .get(
-        "https://fierce-lake-99257.herokuapp.com/accounts/5adb15fd81c30b4847fdae24"
+        "https://fierce-lake-99257.herokuapp.com/accounts/5adc38024e5991001583895d"
       )
       .then(res => {
         this.balance = res.data.balance;
         this.networth = res.data.networth;
+        this.change = this.networth - 1000000;
       })
       .catch(err => {
         console.log(err);
@@ -68,13 +67,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.grid {
-  display: grid;
-  grid-template-columns: 20% 1fr 1fr;
-  grid-template-rows: auto;
-  grid-template-areas: "nav dashboard dashboard";
-}
-
 .summary {
   display: flex;
   margin-bottom: 2rem;

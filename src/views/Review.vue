@@ -20,9 +20,10 @@
 
 <script>
 import axios from "axios";
-import UserTransactions from "@/components/UserTransactions.vue";
+
 import NavApp from "@/components/partials/NavApp.vue";
 import UserHoldings from "@/components/UserHoldings.vue";
+import UserTransactions from "@/components/UserTransactions.vue";
 
 export default {
   name: "Review",
@@ -37,6 +38,7 @@ export default {
       historyActive: false,
       showHoldings: true,
       showHistory: false,
+
       holdings: [],
       transactions: []
     };
@@ -58,7 +60,7 @@ export default {
   created() {
     axios
       .get(
-        "https://fierce-lake-99257.herokuapp.com/accounts/5adb15fd81c30b4847fdae24"
+        "https://fierce-lake-99257.herokuapp.com/accounts/5adc38024e5991001583895d"
       )
       .then(res => {
         this.holdings = res.data.shares;
