@@ -10,25 +10,26 @@
           <tr>
             <th>Rank</th>
             <th>Networth</th>
-            <th>Player</th>
+            <th>Player Name</th>
             <th>Trading Account</th>
           </tr>
         </thead>
-      <!-- <tbody>
-          <tr v-for = "accounts" :key="accounts._id">
-            <td>{{ transaction.date | date }}</td>
-            <td>{{ transaction.share }}</td>
-            <td>{{ transaction.quantity }}</td>
-            <td>{{ transaction.price | currency }}</td>
-            <td>{{ transaction.quantity * transaction.price | currency }}</td>
-      <tbody> -->
+
+      <tbody>
+          <tr v-for="leaderboard in leaderboard" :key="leaderboard.name">
+            <td>{{ leaderboard.calcRank}}</td>
+            <td>{{ leaderboard.networth }}</td>
+            <td>{{ leaderboard.user }}</td>
+            <td>{{ leaderboard.account }}</td>
+          </tr>
+      </tbody>
+
       </table>
     </div>
   </div>
 </template>
 
 <script>
-// import UserHoldings from "@/components/UserHoldings.vue";
 import NavApp from "@/components/partials/NavApp.vue";
 import axios from "axios";
 
@@ -36,15 +37,20 @@ export default {
   name: "leaderboard",
   components: {
     NavApp,
-    accounts: []
+    leaderboard: []
   },
   created() {
     axios
-      .get("https://fierce-lake-99257.herokuapp.com/accounts/ .....")
+      .get("https://fierce-lake-99257.herokuapp.com/leaderboard")
       .then(res => {
-        this.accounts = res.data.accounts;
+        this.leaderboard = res.data.leaderboard;
       });
   }
+  // computed: {
+  //   sortedArray: function() {
+  //   function compare(a, b) {
+
+  // }.
 };
 </script>
 
