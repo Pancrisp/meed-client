@@ -17,10 +17,10 @@
 
       <tbody>
           <tr v-for="leaderboard in leaderboard" :key="leaderboard.name">
-            <td>{{ leaderboard.calcRank}}</td>
-            <td>{{ leaderboard.networth }}</td>
-            <td>{{ leaderboard.user }}</td>
-            <td>{{ leaderboard.account }}</td>
+            <td>{{ index }} </td>
+            <td>{{ leaderboard.networth | currency }} </td>
+            <td>{{ leaderboard.user }} </td>
+            <td>{{ leaderboard.account }} </td>
           </tr>
       </tbody>
 
