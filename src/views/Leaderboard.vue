@@ -30,14 +30,19 @@
 </template>
 
 <script>
-import NavApp from "@/components/partials/NavApp.vue";
 import axios from "axios";
+
+import NavApp from "@/components/partials/NavApp.vue";
 
 export default {
   name: "leaderboard",
   components: {
-    NavApp,
-    leaderboard: []
+    NavApp
+  },
+  data() {
+    return {
+      leaderboard: []
+    };
   },
   created() {
     axios
@@ -49,8 +54,7 @@ export default {
   // computed: {
   //   sortedArray: function() {
   //   function compare(a, b) {
-
-  // }.
+  // }
 };
 </script>
 
