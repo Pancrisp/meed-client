@@ -6,16 +6,6 @@
       <router-link to="/review">Account review</router-link>
       <router-link to="/leaderboard">Leaderboard</router-link>
     </div>
-    <div class="ctg">
-      <h4 class="ctg-title">Trade</h4>
-      <router-link to="/buy">Buy</router-link>
-      <router-link to="/sell">Sell</router-link>
-    </div>
-    <div class="ctg">
-      <h4 class="ctg-title">Friends</h4>
-      <router-link to="/request">Request money</router-link>
-      <router-link to="/send">Send money</router-link>
-    </div>
   </nav>
 </template>
 
