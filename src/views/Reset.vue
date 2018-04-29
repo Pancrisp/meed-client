@@ -3,12 +3,11 @@
     <Header/>
     <img src="../assets/logo_horizontal.png">
     <form>
+      <h2>Reset your password</h2>
+      <p>Enter your email address below and we'll send you a link to reset your password.</p>
       <input type="text" placeholder="Email">
-      <input type="password" placeholder="Password">
-      <p><router-link to="/reset">Forgot your password?</router-link></p>
-      <input type="button" value="Login">
+      <input type="button" value="Send reset password email">
     </form>
-    <p>Don't have an account? <a href="#/signup">Sign up for free</a></p>
   </div>
 </template>
 
@@ -23,6 +22,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+form {
+  width: 400px;
+  margin: 0 auto;
+}
+
 img {
   height: 120px;
   margin: 1.5rem 0;

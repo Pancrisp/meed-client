@@ -4,6 +4,7 @@ import Landing from "./views/Landing.vue";
 import About from "./views/About.vue";
 import SignUp from "./views/SignUp.vue";
 import Login from "./views/Login.vue";
+import Reset from "./views/Reset.vue";
 import Home from "./views/Home.vue";
 import Dashboard from "./views/Dashboard.vue";
 import Review from "./views/Review.vue";
@@ -18,6 +19,7 @@ export default new Router({
     { path: "/about", component: About },
     { path: "/signup", component: SignUp },
     { path: "/login", component: Login },
+    { path: "/reset", component: Reset },
     { path: "/home", component: Home },
     { path: "/dashboard", component: Dashboard },
     { path: "/review", component: Review },
