@@ -10,7 +10,7 @@
       <div class="summary flex">
         <div class="card summary-card flex-1">
           <div>
-            <h3 class="label">S&P/ASX 200</h3>
+            <h3 class="label">Leaderboard</h3>
           </div>
         </div>
 
