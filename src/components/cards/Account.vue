@@ -35,8 +35,8 @@ export default {
   },
   data() {
     return {
-      balance: 1000000,
-      networth: 1000000
+      balance: 0,
+      networth: 0
     };
   },
   mounted() {
