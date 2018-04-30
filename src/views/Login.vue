@@ -3,10 +3,10 @@
     <Header/>
     <img src="../assets/logo_horizontal.png">
     <form>
-      <input type="text" placeholder="Email">
-      <input type="password" placeholder="Password">
+      <input v-model="email" type="text" placeholder="Email">
+      <input v-model="password" type="password" placeholder="Password">
       <p><router-link to="/reset">Forgot your password?</router-link></p>
-      <input type="button" value="Login">
+      <input @click="login" type="button" value="Login">
     </form>
     <p>Don't have an account? <a href="#/signup">Sign up for free</a></p>
   </div>
@@ -18,6 +18,20 @@ import Header from "@/components/partials/Header.vue";
 export default {
   components: {
     Header
+  },
+  data() {
+    return {
+      email: "",
+      password: ""
+    };
+  },
+  methods: {
+    login() {
+      this.$store.dispatch("login", {
+        email: this.email,
+        password: this.password
+      });
+    }
   }
 };
 </script>

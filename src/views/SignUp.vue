@@ -31,20 +31,12 @@ export default {
   },
   methods: {
     signUp() {
-      axios
-        .post("https://fierce-lake-99257.herokuapp.com/users/signup", {
-          name: this.name,
-          email: this.email,
-          password: this.password
-        })
-        .then(res => {
-          console.log(res);
-          console.log(res.data);
-          this.$router.push("/dashboard");
-        })
-        .catch(err => {
-          console.log(err);
-        });
+      this.$store.dispatch("signup", {
+        name: this.name,
+        email: this.email,
+        password: this.password
+      });
+      this.$router.push("/dashboard");
     }
   }
 };
