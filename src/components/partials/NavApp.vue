@@ -6,12 +6,20 @@
       <router-link to="/review">Account review</router-link>
       <router-link to="/leaderboard">Leaderboard</router-link>
     </div>
+    <div class="ctg">
+      <button @click="logout">Logout</button>
+    </div>
   </nav>
 </template>
 
 <script>
 export default {
-  name: "NavApp"
+  name: "NavApp",
+  methods: {
+    logout() {
+      this.$store.dispatch("logout");
+    }
+  }
 };
 </script>
 
@@ -25,13 +33,11 @@ a {
   font-weight: 500;
 
   &.router-link-exact-active {
-    // color: var(--primary-color);
     background: #fff;
     box-shadow: inset 4px 0 0 0 var(--primary-color);
   }
 
   &:hover {
-    // color: var(--primary-color);
     background: #fff;
   }
 }
