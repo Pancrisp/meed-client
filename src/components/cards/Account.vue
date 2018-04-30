@@ -1,32 +1,53 @@
 <template>
-  <div class="card">
-    <div class="card-img">
-      <img src="@/assets/uncle_scrooge.png" alt="">
-    </div>
-    <div class="card-info">
-      <div class="card-name">
-        <h3 class="card-title">{{ name }}</h3>
-        <p class="card-summary">An account summary here, what else can we include?</p>
+  <router-link to="/dashboard">
+    <div class="card">
+      <div class="card-img">
+        <img src="@/assets/uncle_scrooge.png" alt="">
       </div>
-      <div class="card-meta">
-        <div class="meta-fields">
-          <h3 class="meta-title">Balance</h3>
-          <p>$500,000</p>
+      <div class="card-info">
+        <div class="card-name">
+          <h3 class="card-title">{{ name }}</h3>
+          <p class="card-summary">An account summary here, what else can we include?</p>
         </div>
-        <div class="meta-fields">
-          <h3 class="meta-title">Net worth</h3>
-          <p>$500,000</p>
+        <div class="card-meta">
+          <div class="meta-fields">
+            <h3 class="meta-title">Balance</h3>
+            <p>{{ balance | currency }}</p>
+          </div>
+          <div class="meta-fields">
+            <h3 class="meta-title">Net worth</h3>
+            <p>{{ networth | currency }}</p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </router-link>
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   name: "Account",
   props: {
-    name: String
+    name: String,
+    account: String
+  },
+  data() {
+    return {
+      balance: 1000000,
+      networth: 1000000
+    };
+  },
+  mounted() {
+    const account = this.account;
+
+    axios
+      .get(`https://fierce-lake-99257.herokuapp.com/accounts/${account}`)
+      .then(res => {
+        this.balance = res.data.balance;
+        this.networth = res.data.networth;
+      });
   }
 };
 </script>
@@ -34,7 +55,7 @@ export default {
 <style lang="scss" scoped>
 .card {
   display: flex;
-  max-width: 480px;
+  max-width: 560px;
   box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.05);
   transition: 250ms ease;
   border-radius: 4px;
@@ -49,7 +70,7 @@ export default {
 
 .card-img {
   display: block;
-  margin: 1rem 2rem 1rem 1rem;
+  margin: 1rem 2rem 1rem 0;
   max-height: 150px;
 
   img {
