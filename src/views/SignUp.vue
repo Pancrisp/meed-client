@@ -31,11 +31,19 @@ export default {
   },
   methods: {
     signUp() {
-      this.$store.dispatch("signup", {
-        name: this.name,
-        email: this.email,
-        password: this.password
-      });
+      axios
+        .post("http://localhost:5000/users/signup", {
+          name: this.name,
+          email: this.email,
+          password: this.password
+        })
+        .then(res => {
+          console.log(res.data);
+          this.$router.push("/login");
+        })
+        .catch(err => {
+          console.log(err);
+        });
     }
   }
 };

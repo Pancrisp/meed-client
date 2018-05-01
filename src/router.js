@@ -1,5 +1,7 @@
 import Vue from "vue";
 import Router from "vue-router";
+import store from "./store.js";
+
 import Landing from "./views/Landing.vue";
 import About from "./views/About.vue";
 import SignUp from "./views/SignUp.vue";
@@ -20,8 +22,28 @@ export default new Router({
     { path: "/signup", component: SignUp },
     { path: "/login", component: Login },
     { path: "/reset", component: Reset },
-    { path: "/home", component: Home },
-    { path: "/dashboard", component: Dashboard },
+    {
+      path: "/home",
+      component: Home,
+      beforeEnter(to, from, next) {
+        if (store.state.idToken) {
+          next();
+        } else {
+          next("/login");
+        }
+      }
+    },
+    {
+      path: "/dashboard",
+      component: Dashboard,
+      beforeEnter(to, from, next) {
+        if (store.state.idToken) {
+          next();
+        } else {
+          next("/login");
+        }
+      }
+    },
     { path: "/review", component: Review },
     { path: "/leaderboard", component: Leaderboard }
   ]
