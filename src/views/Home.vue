@@ -29,10 +29,9 @@ export default {
     };
   },
   created() {
+    const id = this.$store.getters.userId;
     axios
-      .get(
-        "https://fierce-lake-99257.herokuapp.com/users/5addccb64940710cfb2a0b74"
-      )
+      .get(`https://fierce-lake-99257.herokuapp.com/users/${id}`)
       .then(res => {
         this.isLoading = true;
         this.accounts = res.data.accounts;

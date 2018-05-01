@@ -50,10 +50,9 @@ export default {
     };
   },
   created() {
+    const id = this.$store.getters.userId;
     axios
-      .get(
-        "https://fierce-lake-99257.herokuapp.com/accounts/5adc38024e5991001583895d"
-      )
+      .get(`https://fierce-lake-99257.herokuapp.com/accounts/${id}`)
       .then(res => {
         this.balance = res.data.balance;
         this.networth = res.data.networth;

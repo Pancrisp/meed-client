@@ -3,7 +3,7 @@
     <div class="card-container">
       <label class="label">Trading account name</label>
       <input class="namefield" v-model="name" type="text">
-      <div class="btn btn-create" @click="create">Create a trading account</div>
+      <div class="btn btn-create" @click="createNewAccount">Create a trading account</div>
     </div>
   </div>
 </template>
@@ -19,16 +19,18 @@ export default {
     };
   },
   methods: {
-    create() {
+    createNewAccount() {
+      const id = this.$store.getters.userId;
       axios
         .post(`https://fierce-lake-99257.herokuapp.com/accounts`, {
-          userId: "5addccb64940710cfb2a0b74"
+          userId: id,
+          name: this.name
         })
         .then(res => {
           console.log(res);
 
           if (res.status == 201) {
-            setTimeout(this.$router.push("/dashboard"), 2000);
+            this.$router.push("/dashboard");
           }
         });
     }
