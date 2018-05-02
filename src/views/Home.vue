@@ -2,7 +2,7 @@
   <div class="container">
     <div class="accounts-list" v-show="isLoading">
       <account v-for="account in accounts" :key="account.id"
-        :account="account" name="McDuck Vault">
+        :account="account">
       </account>
       <new-account></new-account>
     </div>

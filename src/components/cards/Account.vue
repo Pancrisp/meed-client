@@ -29,14 +29,12 @@ import axios from "axios";
 
 export default {
   name: "Account",
-  props: {
-    name: String,
-    account: String
-  },
+  props: ["account"],
   data() {
     return {
       balance: 0,
-      networth: 0
+      networth: 0,
+      name: ""
     };
   },
   mounted() {
@@ -47,6 +45,7 @@ export default {
       .then(res => {
         this.balance = res.data.balance;
         this.networth = res.data.networth;
+        this.name = res.data.name;
       });
   }
 };
