@@ -16,8 +16,7 @@
         </thead>
 
       <tbody>
-          <tr v-for="leaderboard in leaderboard" :key="leaderboard.name">
-            <td>{{ index }} </td>
+          <tr v-for="leaderboard in filterRank" :key="leaderboard.name">
             <td>{{ leaderboard.networth | currency }} </td>
             <td>{{ leaderboard.user }} </td>
             <td>{{ leaderboard.account }} </td>
@@ -50,11 +49,12 @@ export default {
       .then(res => {
         this.leaderboard = res.data.leaderboard;
       });
+  },
+  computed: {
+    filterRank() {
+      this.leaderboard.sort((a, b) => a.networth - b.networth);
+    }
   }
-  // computed: {
-  //   sortedArray: function() {
-  //   function compare(a, b) {
-  // }
 };
 </script>
 
