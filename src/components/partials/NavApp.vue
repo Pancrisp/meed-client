@@ -8,7 +8,7 @@
     </div>
     <div class="ctg">
       <router-link to="/home">Switch account</router-link>
-      <button @click="logout">Logout</button>
+      <div class="logout" @click="logout">Logout</div>
     </div>
   </nav>
 </template>
@@ -25,13 +25,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-a {
+a,
+.logout {
   display: block;
   margin-right: 32px;
   padding: 8px 0 8px 16px;
   color: #333;
   line-height: 1.25;
   font-weight: 500;
+  cursor: pointer;
 
   &.router-link-exact-active {
     background: #fff;
