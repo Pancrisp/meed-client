@@ -9,8 +9,6 @@
 </template>
 
 <script>
-import axios from "axios";
-
 export default {
   name: "NewAccount",
   data() {
@@ -20,19 +18,10 @@ export default {
   },
   methods: {
     createNewAccount() {
-      const id = this.$store.getters.userId;
-      axios
-        .post(`https://fierce-lake-99257.herokuapp.com/accounts`, {
-          userId: id,
-          name: this.name
-        })
-        .then(res => {
-          console.log(res);
-
-          if (res.status == 201) {
-            this.$router.push("/dashboard");
-          }
-        });
+      this.$store.dispatch("createNewAccount", {
+        userId: this.$store.getters.userId,
+        name: this.name
+      });
     }
   }
 };

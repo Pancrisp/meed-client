@@ -7,6 +7,7 @@
       <router-link to="/leaderboard">Leaderboard</router-link>
     </div>
     <div class="ctg">
+      <router-link to="/home">Switch account</router-link>
       <button @click="logout">Logout</button>
     </div>
   </nav>

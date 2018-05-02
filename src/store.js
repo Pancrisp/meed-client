@@ -21,6 +21,9 @@ export default new Vuex.Store({
     storeUser(state, user) {
       state.user = user;
     },
+    storeAccountId(state, account) {
+      state.accountId = account.accountId;
+    },
     clearAuth(state) {
       state.idToken = null;
       state.userId = null;
@@ -34,7 +37,6 @@ export default new Vuex.Store({
           password: data.password
         })
         .then(res => {
-          console.log(res);
           commit("authUser", {
             token: res.data.token,
             userId: res.data.userId
@@ -45,11 +47,29 @@ export default new Vuex.Store({
     logout({ commit }) {
       commit("clearAuth");
       router.replace("/login");
+    },
+    createNewAccount({ commit }, data) {
+      axios
+        .post("http://localhost:5000/accounts", {
+          userId: data.userId,
+          name: data.name
+        })
+        .then(res => {
+          commit("storeAccountId", {
+            accountId: res.data.account._id
+          });
+          if (res.status == 201) {
+            router.push("/dashboard");
+          }
+        });
     }
   },
   getters: {
     userId(state) {
       return state.userId;
+    },
+    accountId(state) {
+      return state.accountId;
     },
     isAuthenticated(state) {
       return state.idToken !== null;
