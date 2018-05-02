@@ -26,7 +26,7 @@ div {
   padding: 1rem 0;
   text-align: center;
   background: #fff;
-  border: 1px solid #afafaf;
+  border: 1px solid #d3d3d3;
   border-radius: 4px;
 }
 
