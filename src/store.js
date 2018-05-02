@@ -26,6 +26,7 @@ export default new Vuex.Store({
       state.isAuthenticated = false;
       state.userId = null;
       state.idToken = null;
+      state.accountId = null;
     }
   },
   actions: {
