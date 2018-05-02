@@ -8,9 +8,10 @@
         <Summary class="summary-card" title="Net worth" :value="networth" />
       </div>
       <div class="summary flex">
-        <div class="card summary-card flex-1">
+        <div class="card summary-card leaderboard flex-1">
           <div>
-            <h3 class="label">Leaderboard</h3>
+            <!-- <h3 class="label">Leaderboard</h3> -->
+            <leaderboard></leaderboard>
           </div>
         </div>
 
@@ -34,13 +35,15 @@ import axios from "axios";
 import NavApp from "@/components/partials/NavApp.vue";
 import Summary from "@/components/cards/Summary.vue";
 import ShareList from "@/components/ShareList.vue";
+import Leaderboard from "@/components/Leaderboard.vue";
 
 export default {
   name: "dashboard",
   components: {
     NavApp,
     Summary,
-    ShareList
+    ShareList,
+    Leaderboard
   },
   data() {
     return {
@@ -77,6 +80,11 @@ export default {
   &:last-of-type {
     margin: 0;
   }
+}
+
+.leaderboard {
+  padding: 0;
+  overflow: hidden;
 }
 
 .label {
