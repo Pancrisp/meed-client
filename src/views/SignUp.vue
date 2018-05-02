@@ -32,15 +32,14 @@ export default {
   methods: {
     signUp() {
       axios
-        .post("https://fierce-lake-99257.herokuapp.com/users/signup", {
+        .post("http://localhost:5000/users/signup", {
           name: this.name,
           email: this.email,
           password: this.password
         })
         .then(res => {
-          console.log(res);
           console.log(res.data);
-          this.$router.push("/dashboard");
+          this.$router.push("/login");
         })
         .catch(err => {
           console.log(err);

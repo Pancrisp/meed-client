@@ -10,7 +10,7 @@
       <div class="summary flex">
         <div class="card summary-card flex-1">
           <div>
-            <h3 class="label">S&P/ASX 200</h3>
+            <h3 class="label">Leaderboard</h3>
           </div>
         </div>
 
@@ -50,10 +50,9 @@ export default {
     };
   },
   created() {
+    const accountId = this.$store.getters.accountId;
     axios
-      .get(
-        "https://fierce-lake-99257.herokuapp.com/accounts/5adc38024e5991001583895d"
-      )
+      .get(`https://fierce-lake-99257.herokuapp.com/accounts/${accountId}`)
       .then(res => {
         this.balance = res.data.balance;
         this.networth = res.data.networth;
