@@ -62,6 +62,12 @@ export default new Vuex.Store({
             router.push("/dashboard");
           }
         });
+    },
+    setAccountId({ commit }, data) {
+      commit("storeAccountId", {
+        accountId: data.accountId
+      });
+      router.push("/dashboard");
     }
   },
   getters: {
