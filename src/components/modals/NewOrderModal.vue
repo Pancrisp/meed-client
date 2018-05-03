@@ -66,7 +66,7 @@ export default {
     buy() {
       axios
         .post("https://fierce-lake-99257.herokuapp.com/accounts/buy", {
-          accountId: "5adc38024e5991001583895d",
+          accountId: this.$store.getters.accountId,
           symbol: this.shares.symbol,
           quantity: this.quantity
         })

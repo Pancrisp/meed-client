@@ -32,7 +32,7 @@ export default new Vuex.Store({
   actions: {
     login({ commit }, data) {
       axios
-        .post("http://localhost:5000/users/login", {
+        .post(`https://fierce-lake-99257.herokuapp.com/users/login`, {
           email: data.email,
           password: data.password
         })
