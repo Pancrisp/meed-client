@@ -49,17 +49,7 @@ export default {
             name: shares.price,
             data: [29.9, 71.5, 106.4, 129.2]
           }
-        ],
-        created() {
-          axios
-            .get("https://fierce-lake-99257.herokuapp.com/leaderboard")
-            .then(res => {
-              this.shares = res.data;
-            })
-            .catch(err => {
-              console.log(err);
-            });
-        }
+        ]
       });
     });
   }
