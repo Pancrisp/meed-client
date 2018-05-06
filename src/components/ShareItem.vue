@@ -10,9 +10,9 @@
         :shares="shares" :show="showModal" @close="showModal = false"
       ></new-order-modal>
     </td>
-    <!-- <tbody v-for="share in shareChart" :key="share.price">
-        <share-chart :shares="share"></share-chart> -->
-    <!-- </tbody> -->
+    <tbody>
+      <highstock :options="options"></highstock>
+    </tbody>
   </tr>
 </template>
 
@@ -23,7 +23,8 @@ import ShareChart from "@/components/ShareChart.vue";
 export default {
   name: "ShareItem",
   components: {
-    NewOrderModal
+    NewOrderModal,
+    ShareChart
   },
   data() {
     return {

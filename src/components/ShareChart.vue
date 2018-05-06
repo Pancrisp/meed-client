@@ -12,12 +12,16 @@
 
 <script>
 import NavApp from "@/components/partials/NavApp.vue";
-import highcharts from "commonjs-highcharts";
+import VueHighcharts from "vue-highcharts";
+import Highcharts from "highcharts/highstock";
+
+Vue.use(VueHighcharts, { Highcharts });
 
 export default {
   name: "ShareChart",
   components: {
-    ShareItem
+    ShareItem,
+    highcharts: Chart
   },
   data() {
     return {
