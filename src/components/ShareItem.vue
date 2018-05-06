@@ -10,11 +10,15 @@
         :shares="shares" :show="showModal" @close="showModal = false"
       ></new-order-modal>
     </td>
+    <tbody v-for="share in shareChart" :key="share.price">
+        <share-chart :shares="share"></share-chart>
+    </tbody>
   </tr>
 </template>
 
 <script>
 import NewOrderModal from "./modals/NewOrderModal.vue";
+import ShareChart from "@/components/views/ShareChart.vue";
 
 export default {
   name: "ShareItem",

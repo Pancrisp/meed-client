@@ -2,10 +2,10 @@
   <div class="container flex px3">
     <NavApp/>
     <div class="workspace">
-      <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
       <script src="https://code.highcharts.com/highcharts.js"></script>
+      <script src="https://code.highcharts.com/modules/exporting.js"></script>
+      <script src="https://code.highcharts.com/modules/export-data.js"></script>
       <div id ="container">
-
 
      </div>
     </div>
@@ -15,7 +15,7 @@
 <script>
 import NavApp from "@/components/partials/NavApp.vue";
 import Highcharts from "highcharts";
-import axios from "axios";
+
 
 export default {
   name: "ShareChart",
@@ -23,34 +23,34 @@ export default {
     ShareItem
   },
   data() {
-    return {};
+    return {
+      shares: []
+    };
   },
   props: ["shares"],
   ready() {
-    $(function() {
+    $(function(data) {
       var chart = Highcharts.chart("container", {
+
+        rangeSelector: {
+        selected: 1
+        },
+
         xAxis: {
-          categories: ["Mon", "Tues", "Wed", "Thurs"]
+          categories: ["Mon", "Tues", "Wed", "Thurs"],
+          type: 'datetime',
         },
         yAxis: {
           title: {
             text: "Share Prices"
           }
         },
-        plotOptions: {
-          series: {
-            marker: {
-              enabled: false
-            }
-          }
-        },
-        series: [
-          {
-            name: shares.price,
-            data: [29.9, 71.5, 106.4, 129.2]
-          }
-        ]
-      });
+        plotOptions: {},
+			  series: [{
+    		name: 'shares',
+    		data: this.price
+  		}],
+      }),
     });
   }
 };
