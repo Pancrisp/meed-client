@@ -13,6 +13,7 @@
 <script>
 import NavApp from "@/components/partials/NavApp.vue";
 import Highcharts from "highcharts";
+import highcharts from "commonjs-highcharts";
 
 export default {
   name: "ShareChart",
@@ -26,8 +27,8 @@ export default {
   },
   props: ["shares"],
   ready() {
-    $(function() {
-      var chart = Highcharts.chart("container", {
+    $(function(data) {
+      var chart = Highcharts.stockChart("container", {
         rangeSelector: {
           selected: 1
         },
@@ -40,7 +41,7 @@ export default {
         },
         yAxis: {
           title: {
-            text: "Share Prices"
+            text: shares.name + "Prices"
           }
         },
         plotOptions: {},
@@ -58,9 +59,6 @@ export default {
 };
 </script>
 
-<script src="https://code.highcharts.com/highcharts.js"></script>
-<script src="https://code.highcharts.com/modules/exporting.js"></script>
-<script src="https://code.highcharts.com/modules/export-data.js"></script>
 
 <style lang="scss" scoped>
 #container {
