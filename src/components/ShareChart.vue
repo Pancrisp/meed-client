@@ -12,7 +12,6 @@
 
 <script>
 import NavApp from "@/components/partials/NavApp.vue";
-import Highcharts from "highcharts";
 import highcharts from "commonjs-highcharts";
 
 export default {
@@ -25,20 +24,23 @@ export default {
       shares: []
     };
   },
-  props: ["shares"],
+  // props: ["shares"],
   ready() {
     $(function(data) {
       var chart = Highcharts.stockChart("container", {
         rangeSelector: {
-          selected: 1
+          selected: 4
         },
+
         xAxis: {
           // categories: ["Mon", "Tues", "Wed", "Thurs"],
           type: "datetime",
           dateTimeLabelFormats: {
             day: "%e of %b"
-          }
+          },
+          visibile: true
         },
+
         yAxis: {
           title: {
             text: shares.name + "Prices"
@@ -48,13 +50,32 @@ export default {
         series: [
           {
             name: "shares",
-            data: this.price,
-            pointStart: Date.UTC(2018, 05, 02),
-            pointInterval: 24 * 3600 * 1000 // one day
+            data: createData()
+            // pointInterval: 24 * 3600 * 1000 // one day
           }
         ]
       });
     });
+  },
+
+  computed: {
+    function() {
+      startDate = Date.UTC(2018, 5, 1);
+      (createData = function(beginDate) {
+        shares = [];
+        for (var i = 0; i < 11; i++) {
+          shares.push([beginDate + 3600 * 1000 * 24 * i, Math.random() * 100]);
+        }
+        return shares;
+      }),
+        (nextDay = function() {
+          startDate += 3600 * 1000 * 24;
+          chart.series[0].setData(createData(startDate), true);
+          setTimeout(nextDay, 2000);
+        });
+
+      setTimeout(nextDay, 2000);
+    }
   }
 };
 </script>
