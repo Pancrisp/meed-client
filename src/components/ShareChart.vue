@@ -2,9 +2,7 @@
   <div class="container flex px3">
     <NavApp/>
     <div class="workspace">
-      <script src="https://code.highcharts.com/highcharts.js"></script>
-      <script src="https://code.highcharts.com/modules/exporting.js"></script>
-      <script src="https://code.highcharts.com/modules/export-data.js"></script>
+
       <div id ="container">
 
      </div>
@@ -15,7 +13,6 @@
 <script>
 import NavApp from "@/components/partials/NavApp.vue";
 import Highcharts from "highcharts";
-
 
 export default {
   name: "ShareChart",
@@ -29,16 +26,17 @@ export default {
   },
   props: ["shares"],
   ready() {
-    $(function(data) {
+    $(function() {
       var chart = Highcharts.chart("container", {
-
         rangeSelector: {
-        selected: 1
+          selected: 1
         },
-
         xAxis: {
-          categories: ["Mon", "Tues", "Wed", "Thurs"],
-          type: 'datetime',
+          // categories: ["Mon", "Tues", "Wed", "Thurs"],
+          type: "datetime",
+          dateTimeLabelFormats: {
+            day: "%e of %b"
+          }
         },
         yAxis: {
           title: {
@@ -46,15 +44,23 @@ export default {
           }
         },
         plotOptions: {},
-			  series: [{
-    		name: 'shares',
-    		data: this.price
-  		}],
-      }),
+        series: [
+          {
+            name: "shares",
+            data: this.price,
+            pointStart: Date.UTC(2018, 05, 02),
+            pointInterval: 24 * 3600 * 1000 // one day
+          }
+        ]
+      });
     });
   }
 };
 </script>
+
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
 
 <style lang="scss" scoped>
 #container {
