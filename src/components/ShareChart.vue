@@ -11,7 +11,7 @@
                 </tr>
                 <tr>
                   <th><highstock :chart="chart"></highstock></th>
-                  <th><highcharts :chart="chart"></highcharts></th>
+                  <th></th>
                 </tr>
             </thead>
           </table>
