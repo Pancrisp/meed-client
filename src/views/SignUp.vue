@@ -9,7 +9,7 @@
       <input type="button" @click="signUp" value="Sign up">
     </form>
     <p>
-      Already have an account? <a href="#/login">Sign in</a>
+      Already have an account? <a href="login">Sign in</a>
     </p>
   </div>
 </template>
@@ -32,7 +32,7 @@ export default {
   methods: {
     signUp() {
       axios
-        .post("http://localhost:5000/users/signup", {
+        .post("https://fierce-lake-99257.herokuapp.com/users/signup", {
           name: this.name,
           email: this.email,
           password: this.password
