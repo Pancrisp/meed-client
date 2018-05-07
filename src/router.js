@@ -26,7 +26,7 @@ export default new Router({
       path: "/home",
       component: Home,
       beforeEnter(to, from, next) {
-        if (store.state.idToken) {
+        if (store.state.isAuthenticated) {
           next();
         } else {
           next("/login");
@@ -37,7 +37,7 @@ export default new Router({
       path: "/dashboard",
       component: Dashboard,
       beforeEnter(to, from, next) {
-        if (store.state.idToken) {
+        if (store.state.isAuthenticated) {
           next();
         } else {
           next("/login");

@@ -1,6 +1,6 @@
 <template>
   <router-link to="/dashboard">
-    <div class="card">
+    <div class="card" @click="setAccountId">
       <div class="card-img">
         <img src="@/assets/uncle_scrooge.png" alt="">
       </div>
@@ -37,11 +37,17 @@ export default {
       name: ""
     };
   },
+  methods: {
+    setAccountId() {
+      this.$store.dispatch("setAccountId", {
+        accountId: this.account
+      });
+    }
+  },
   mounted() {
-    const account = this.account;
-
+    const accountId = this.account;
     axios
-      .get(`https://fierce-lake-99257.herokuapp.com/accounts/${account}`)
+      .get(`https://fierce-lake-99257.herokuapp.com/accounts/${accountId}`)
       .then(res => {
         this.balance = res.data.balance;
         this.networth = res.data.networth;

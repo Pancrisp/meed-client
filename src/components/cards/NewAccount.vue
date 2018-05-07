@@ -1,9 +1,11 @@
 <template>
   <div class="card">
     <div class="card-container">
-      <label class="label">Trading account name</label>
-      <input class="namefield" v-model="name" type="text">
-      <div class="btn btn-create" @click="createNewAccount">Create a trading account</div>
+      <form @submit.prevent="createNewAccount">
+        <label class="label">Trading account name</label>
+        <input class="namefield" v-model="name" type="text">
+        <button class="btn btn-create" :class="{ disabled: isDisabled }" :disabled="isDisabled">Create a trading account</button>
+      </form>
     </div>
   </div>
 </template>
@@ -22,6 +24,15 @@ export default {
         userId: this.$store.getters.userId,
         name: this.name
       });
+    }
+  },
+  computed: {
+    isDisabled() {
+      if (this.name.length >= 3) {
+        return false;
+      } else {
+        return true;
+      }
     }
   }
 };
@@ -49,12 +60,18 @@ export default {
 
 .btn-create {
   margin: 0 auto;
+  width: 100%;
+  font-size: 14px;
   padding: 1rem;
-  background: #e8e8e8;
-  cursor: pointer;
+  color: #fff;
+  background: var(--primary-color);
+  transition: 150ms ease;
+  letter-spacing: 1px;
+}
 
-  &:hover {
-    background: darken(#e8e8e8, 5%);
-  }
+.disabled {
+  color: #969696;
+  background: #e8e8e8;
+  cursor: default;
 }
 </style>
