@@ -3,8 +3,18 @@
     <NavApp/>
       <div class="workspace">
         <div id ="container">
-            <highcharts :options="options"></highcharts>
-            <highstock :options="options"></highstock>
+          <table>
+            <thead>
+                <tr>
+                  <th>{{shares.name}} Stock Chart</th>
+                  <th>Last Four Days</th>
+                </tr>
+                <tr>
+                  <th><highstock :chart="chart"></highstock></th>
+                  <th><highcharts :chart="chart"></highcharts></th>
+                </tr>
+            </thead>
+          </table>
         </div>
       </div>
   </div>
@@ -26,8 +36,6 @@ var chart = Highcharts.stockChart("container", {
     borderWidth: 0
   },
 
-  //ready() {
-  //(function(shares) {
   chart: {
     events: {
       load: function(shares) {
@@ -48,7 +56,7 @@ var chart = Highcharts.stockChart("container", {
 
     yAxis: {
       title: {
-        text: shares.name + "Prices"
+        text: "Share Prices"
       }
     },
 
@@ -63,9 +71,9 @@ var chart = Highcharts.stockChart("container", {
             i;
 
           for (i = -999; i <= 0; i += 1) {
-            data.push([time + i * 1000, Math.round(Math.random() * 100)]);
+            shares.push([time + i * 1000, Math.round(Math.random() * 100)]);
           }
-          return shares.price;
+          return shares;
         }
       }
     ]
@@ -91,6 +99,22 @@ export default {
   max-width: 800px;
   height: 400px;
   margin: 0 auto;
+}
+
+th {
+  padding: 0.5rem 1rem;
+  font-weight: 500;
+}
+
+thead {
+  margin-right: 0.5rem;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+td {
+  padding: 0.5rem 1rem;
+  font-weight: 500;
 }
 </style>
 
