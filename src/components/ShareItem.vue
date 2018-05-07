@@ -11,7 +11,7 @@
       ></new-order-modal>
     </td>
     <tbody>
-      <share-chart :chart="chart"></share-chart>
+      <share-chart :options="options"></share-chart>
     </tbody>
   </tr>
 </template>

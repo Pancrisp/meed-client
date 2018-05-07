@@ -10,7 +10,7 @@
                   <th>Last Four Days</th>
                 </tr>
                 <tr>
-                  <th><highstock :chart="chart"></highstock></th>
+                  <th><highstock :options= "options"></highstock></th>
                   <th></th>
                 </tr>
             </thead>
@@ -25,9 +25,9 @@ import NavApp from "@/components/partials/NavApp.vue";
 import VueHighcharts from "vue-highcharts";
 import Highcharts from "highcharts/highstock";
 
-Vue.use(VueHighcharts, { Highcharts });
+var chart1;
 
-var chart = Highcharts.stockChart("container", {
+chart1 = Highcharts.stockChart("container", {
   //format stockchart
   legend: {
     layout: "vertical",
@@ -36,48 +36,50 @@ var chart = Highcharts.stockChart("container", {
     borderWidth: 0
   },
 
-  chart: {
-    events: {
-      load: function(shares) {
-        // set up the updating of the chart each second
-        var series = this.series[0];
-        setInterval(function() {
-          var x = new Date().getTime(), // current time
-            y = Math.round(Math.random() * 100);
-          series.addPoint([x, y], true, true);
-        }, 1000);
-      }
-    },
+  //     // chart: {
+  //     //   events: {
+  //     //     load: function(shares) {
+  //     //       // set up the updating of the chart each second
+  //     //       var series = this.series[0];
+  //     //       setInterval(function() {
+  //     //         var x = new Date().getTime(), // current time
+  //     //           y = Math.round(Math.random() * 100);
+  //     //         series.addPoint([x, y], true, true);
+  //     //       }, 1000);
+  //     //     }
+  //     //   },
 
-    xAxis: {
-      type: "datetime",
-      visibile: true
-    },
+  xAxis: {
+    type: "datetime",
+    visibile: true,
+    units: ["day", [1, 4]],
+    tickInterval: 4 * 24 * 3600 * 1000,
+    showFirstLabel: true,
+    startOnTick: false
+  },
 
-    yAxis: {
-      title: {
-        text: "Share Prices"
-      }
-    },
+  yAxis: {
+    title: {
+      text: "Share Prices"
+    }
+  },
 
-    plotOptions: {},
-    series: [
-      {
-        name: "shares",
-        data: function() {
-          // generate an array of shares data
-          var shares = [],
-            time = new Date().getTime(),
-            i;
-
-          for (i = -999; i <= 0; i += 1) {
-            shares.push([time + i * 1000, Math.round(Math.random() * 100)]);
-          }
-          return shares;
-        }
-      }
-    ]
-  }
+  plotOptions: {},
+  series: [
+    {
+      name: "shares",
+      data: []
+      //           {
+      // //         //   // generate an array of shares data
+      // //         shares: []
+      // //         // time = new Date().getTime(),
+      // //         // i;
+      // //         // for (i = -999; i <= 0; i += 1) {
+      // //         //   shares.push([time + i * 1000, Math.round(Math.random() * 100)]);
+      // //         // }
+      // //         // return shares;
+    }
+  ]
 });
 
 export default {
@@ -85,7 +87,7 @@ export default {
   components: {},
   data() {
     return {
-      stockChart: chart
+      options: chart1
     };
   },
   props: ["shares"]
