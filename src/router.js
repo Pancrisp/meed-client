@@ -10,7 +10,6 @@ import Reset from "./views/Reset.vue";
 import Home from "./views/Home.vue";
 import Dashboard from "./views/Dashboard.vue";
 import Review from "./views/Review.vue";
-import Leaderboard from "./views/Leaderboard.vue";
 
 Vue.use(Router);
 
@@ -44,7 +43,16 @@ export default new Router({
         }
       }
     },
-    { path: "/review", component: Review },
-    { path: "/leaderboard", component: Leaderboard }
+    {
+      path: "/review",
+      component: Review,
+      beforeEnter(to, from, next) {
+        if (store.state.isAuthenticated) {
+          next();
+        } else {
+          next("/login");
+        }
+      }
+    }
   ]
 });

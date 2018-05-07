@@ -4,7 +4,6 @@
       <h4 class="ctg-title">Browse</h4>
       <router-link to="/dashboard">Dashboard</router-link>
       <router-link to="/review">Account review</router-link>
-      <router-link to="/leaderboard">Leaderboard</router-link>
     </div>
     <div class="ctg">
       <router-link to="/home">Switch account</router-link>
