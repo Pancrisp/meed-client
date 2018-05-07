@@ -11,7 +11,7 @@
       ></new-order-modal>
     </td>
     <tbody>
-      <highstock :options="options"></highstock>
+      <share-chart :chart="chart"></share-chart>
     </tbody>
   </tr>
 </template>
