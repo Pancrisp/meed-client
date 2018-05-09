@@ -10,8 +10,8 @@
                   <th>Last Four Days</th>
                 </tr>
                 <tr>
-                  <th><highstock :options= "options"></highstock></th>
-                  <th></th>
+                  <th><vue-highcharts :options= "options" ref="stockCharts"></vue-highcharts></th>
+                  <th><button @click="load">Load Chart</button></th>
                 </tr>
             </thead>
           </table>
@@ -25,9 +25,10 @@ import NavApp from "@/components/partials/NavApp.vue";
 import VueHighcharts from "vue-highcharts";
 import Highcharts from "highcharts/highstock";
 
-var chart1;
+var ShareChart;
 
-chart1 = Highcharts.stockChart("container", {
+ShareChart = Highcharts.stockChart("container", {
+
   //format stockchart
   legend: {
     layout: "vertical",
@@ -35,19 +36,6 @@ chart1 = Highcharts.stockChart("container", {
     verticalAlign: "middle",
     borderWidth: 0
   },
-
-  //     // chart: {
-  //     //   events: {
-  //     //     load: function(shares) {
-  //     //       // set up the updating of the chart each second
-  //     //       var series = this.series[0];
-  //     //       setInterval(function() {
-  //     //         var x = new Date().getTime(), // current time
-  //     //           y = Math.round(Math.random() * 100);
-  //     //         series.addPoint([x, y], true, true);
-  //     //       }, 1000);
-  //     //     }
-  //     //   },
 
   xAxis: {
     type: "datetime",
@@ -67,7 +55,7 @@ chart1 = Highcharts.stockChart("container", {
   plotOptions: {},
   series: [
     {
-      name: "shares",
+      name: "sharesItem",
       data: []
       //           {
       // //         //   // generate an array of shares data
@@ -83,15 +71,28 @@ chart1 = Highcharts.stockChart("container", {
 });
 
 export default {
-  name: "ShareChart",
-  components: {},
+  name: "ShareChartItem",
+  components: {
+    VueHighcharts
+  },
   data() {
     return {
-      options: chart1
+      options: {
+        ShareChart
+      }
     };
   },
   props: ["shares"]
 };
+  methods: {
+    load () {
+      let stockCharts = this.$refs.stockCharts;
+      setTimeout(() => {
+        stockCharts.addSeries(ShareChart);
+      });
+    };
+  };
+
 </script>
 
 
