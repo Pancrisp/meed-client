@@ -7,6 +7,7 @@
           <input type="text" :value="shares.name" disabled>
         </div>
 
+
         <div class="flex">
           <div class="field">
             <label class="label">Price</label>

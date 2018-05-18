@@ -5,7 +5,8 @@ import store from "./store";
 
 Vue.config.productionTip = false;
 
-Vue.use(VueHighcharts, { Highcharts });
+
+// import highcharts from "vue-highcharts";
 
 
 

@@ -10,7 +10,7 @@ import Reset from "./views/Reset.vue";
 import Home from "./views/Home.vue";
 import Dashboard from "./views/Dashboard.vue";
 import Review from "./views/Review.vue";
-import Leaderboard from "./views/Leaderboard.vue";
+import Admin from "./views/Admin.vue";
 
 Vue.use(Router);
 
@@ -45,6 +45,6 @@ export default new Router({
       }
     },
     { path: "/review", component: Review },
-    { path: "/leaderboard", component: Leaderboard }
+    { path: "/admin", component: Admin }
   ]
 });

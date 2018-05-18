@@ -10,9 +10,6 @@
         :shares="shares" :show="showModal" @close="showModal = false"
       ></new-order-modal>
     </td>
-    <tbody>
-      <share-chart :options="options"></share-chart>
-    </tbody>
   </tr>
 </template>
 
@@ -26,6 +23,7 @@ export default {
     NewOrderModal,
     ShareChart
   },
+
   data() {
     return {
       showModal: false

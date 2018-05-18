@@ -5,29 +5,35 @@
       <div>
         <h3 class="adminHeader">Admin Control</h3>
       </div>
-      <input type="text" class="searchbar" v-model="search" placeholder="Search for players...">
       <table>
         <thead>
           <tr>
             <th>Player Name</th>
             <th>Email</th>
             <th>Last Login
-              <img @click="sortLastLogin" src="../assets/icons8-sort-18.png" alt="sort players last login date by ascending or descending order">
+              <img @click="mostRecentActivity" src="../assets/icons8-sort-18.png" alt="sort players on recent activity by ascending or descending order">
             </th>
             <th>Admin Action</th>
           </tr>
         </thead>
 
-      <tbody>
-          <tr v-for="admin in filterRank" :key="admin.user">
-            <td>{{ admin.user}} </td>
-            <td>{{ admin.name }} </td>
-            <td>{{ admin.lastLogin }} </td>
+        <tbody>
+          <tr v-for="user in users" :key="user._id">
+            <td>{{ user.name }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.mostRecentActivity | date }} </td>
             <!-- two buttons to fill td below -->
-            <td> {{admin.action}} </td>
+            <td class="action">
+              <span class="btn btn-notify">Notify</span>
+              <span class="btn btn-block" @click="showModal = true">Block</span>
+              <confirmation
+                :name="user.name"
+                :show="showModal"
+                @close="showModal = false">
+              </confirmation>
+            </td>
           </tr>
-      </tbody>
-
+        </tbody>
       </table>
     </div>
   </div>
@@ -35,28 +41,36 @@
 
 <script>
 import axios from "axios";
+import format from "date-fns/format";
 
 import NavApp from "@/components/partials/NavApp.vue";
+import Confirmation from "@/components/modals/Confirmation.vue";
 
 export default {
   name: "admin",
   components: {
-    NavApp
+    NavApp,
+    Confirmation
   },
   data() {
     return {
-      users: [],
-      search: ""
+      showModal: false,
+      users: []
     };
   },
   created() {
     axios.get("https://fierce-lake-99257.herokuapp.com/users").then(res => {
-      this.users = res.data.users;
+      this.users = res.data;
     });
   },
   methods: {
-    sortNameByAlpha() {
-      this.lastLogin.sort((a, b) => (a.date > b.date ? 1 : -1));
+    mostRecentActivity() {
+      this.users.sort((a, b) => (a.date > b.date ? 1 : -1));
+    }
+  },
+  filters: {
+    date(val) {
+      return format(val, "DD MMM YYYY, h:mm A");
     }
   }
 };
@@ -112,5 +126,21 @@ img {
   float: right;
   padding-top: 3px;
   cursor: pointer;
+}
+
+.action {
+  padding: 1rem 0;
+}
+
+.btn-notify {
+  background: #38be0f;
+  margin: 4px;
+  color: #fff;
+}
+
+.btn-block {
+  background: rgb(231, 43, 43);
+  margin: 4px;
+  color: #fff;
 }
 </style>
