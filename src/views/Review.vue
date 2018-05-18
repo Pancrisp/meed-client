@@ -58,10 +58,9 @@ export default {
     }
   },
   created() {
+    const accountId = this.$store.getters.accountId;
     axios
-      .get(
-        "https://fierce-lake-99257.herokuapp.com/accounts/5adc38024e5991001583895d"
-      )
+      .get(`https://fierce-lake-99257.herokuapp.com/accounts/${accountId}`)
       .then(res => {
         this.holdings = res.data.shares;
         this.transactions = res.data.transactions;

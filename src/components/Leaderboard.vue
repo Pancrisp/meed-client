@@ -1,43 +1,32 @@
 <template>
-  <div class="container flex px3">
-    <NavApp/>
-    <div class="workspace">
-      <div>
-        <h3 class="leaderboardHeader">Leaderboard</h3>
-      </div>
-      <table>
-        <thead>
-          <tr>
-            <th>Rank</th>
-            <th>Networth</th>
-            <th>Player Name</th>
-            <th>Trading Account</th>
-          </tr>
-        </thead>
-
-      <tbody>
-          <tr v-for="leaderboard in filterRank" :key="leaderboard.name">
-            <td>{{ leaderboard.networth | currency }} </td>
-            <td>{{ leaderboard.user }} </td>
-            <td>{{ leaderboard.account }} </td>
-          </tr>
-      </tbody>
-
-      </table>
+  <div class="container">
+    <div>
+      <h3 class="leaderboardHeader">Leaderboard</h3>
     </div>
+    <table>
+      <thead>
+        <tr>
+          <th>User</th>
+          <th>Trading account</th>
+          <th>Net worth</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="account in leaderboard" :key="account.name">
+          <td>{{ account.user }} </td>
+          <td>{{ account.account }} </td>
+          <td>{{ account.networth | currency }} </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </template>
 
 <script>
 import axios from "axios";
 
-import NavApp from "@/components/partials/NavApp.vue";
-
 export default {
-  name: "leaderboard",
-  components: {
-    NavApp
-  },
+  name: "Leaderboard",
   data() {
     return {
       leaderboard: []
@@ -52,7 +41,7 @@ export default {
   },
   computed: {
     filterRank() {
-      this.leaderboard.sort((a, b) => a.networth - b.networth);
+      this.leaderboard.sort((a, b) => (a.networth > b.networth ? 1 : -1));
     }
   }
 };
@@ -62,25 +51,26 @@ export default {
 .leaderboardHeader {
   width: 100%;
   max-width: 100%;
-  margin: 2rem 0 0.5rem 0;
+  margin: 0;
   background-color: #f99f46;
   font-size: 14px;
   font-weight: 500;
+  color: #fff;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
-  border-radius: 4px;
+  letter-spacing: 1px;
   padding: 10px;
 }
 
 table {
   width: 100%;
   background: #fff;
-  border: 1px solid #d3d3d3;
+  // border: 1px solid #d3d3d3;
   border-radius: 4px;
 }
 
 th {
   padding: 0.5rem 1rem;
+  color: var(--label-color);
   font-weight: 500;
 }
 

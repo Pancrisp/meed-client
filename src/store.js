@@ -8,31 +8,31 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    idToken: null,
-    userId: null,
-    user: null,
-    accountId: null
+    isAuthenticated: localStorage.getItem("token"),
+    userId: localStorage.getItem("userId"),
+    accountId: localStorage.getItem("accountId"),
+    idToken: localStorage.getItem("token")
   },
   mutations: {
     authUser(state, user) {
-      state.idToken = user.token;
+      state.isAuthenticated = true;
       state.userId = user.userId;
-    },
-    storeUser(state, user) {
-      state.user = user;
+      state.idToken = user.token;
     },
     storeAccountId(state, account) {
       state.accountId = account.accountId;
     },
     clearAuth(state) {
-      state.idToken = null;
+      state.isAuthenticated = false;
       state.userId = null;
+      state.idToken = null;
+      state.accountId = null;
     }
   },
   actions: {
     login({ commit }, data) {
       axios
-        .post("http://localhost:5000/users/login", {
+        .post(`https://fierce-lake-99257.herokuapp.com/users/login`, {
           email: data.email,
           password: data.password
         })
@@ -41,16 +41,19 @@ export default new Vuex.Store({
             token: res.data.token,
             userId: res.data.userId
           });
+          localStorage.setItem("token", res.data.token);
+          localStorage.setItem("userId", res.data.userId);
           router.push("/home");
         });
     },
     logout({ commit }) {
       commit("clearAuth");
+      localStorage.clear();
       router.replace("/login");
     },
     createNewAccount({ commit }, data) {
       axios
-        .post("http://localhost:5000/accounts", {
+        .post(`https://fierce-lake-99257.herokuapp.com/accounts`, {
           userId: data.userId,
           name: data.name
         })
@@ -58,6 +61,7 @@ export default new Vuex.Store({
           commit("storeAccountId", {
             accountId: res.data.account._id
           });
+          localStorage.setItem("accountId", res.data.account._id);
           if (res.status == 201) {
             router.push("/dashboard");
           }
@@ -67,6 +71,7 @@ export default new Vuex.Store({
       commit("storeAccountId", {
         accountId: data.accountId
       });
+      localStorage.setItem("accountId", data.accountId);
       router.push("/dashboard");
     }
   },
@@ -78,7 +83,7 @@ export default new Vuex.Store({
       return state.accountId;
     },
     isAuthenticated(state) {
-      return state.idToken !== null;
+      return state.isAuthenticated;
     }
   }
 });
