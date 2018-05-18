@@ -1,19 +1,12 @@
 <template>
   <modal :show="show" @close="close">
     <div class="blockModal">
-      <br>
       <img src="../../../public/block_icon.svg" alt="blockicon">
-      <br>
-      <h3 class="label">Are you sure</h3>
-      <p class="label">Are you sure you want to block {{ name }}?</p>
-      <br>
-      <table class="confirm-field" align="center">
-        <th>
-          <td><input type="button" class="btn btn-cancel" value="Cancel" @click="cancel"></td>
-          <td></td>
-          <td><input type="button" class="btn btn-block" value="Block" @click="block"></td>
-        </th>
-      </table>
+      <h2 class="label">Are you sure you want to block {{ name }}?</h2>
+      <div class="btn-container">
+        <input type="button" class="btn btn-cancel" value="Cancel" @click="cancel">
+        <input type="button" class="btn btn-block" value="Block" @click="block">
+      </div>
     </div>
   </modal>
 </template>
@@ -31,44 +24,45 @@ export default {
     close() {
       this.$emit("close");
     },
-
-    block() {},
-
-    cancel() {}
+    cancel() {
+      this.close();
+    },
+    block() {
+      this.close();
+    }
   }
 };
 </script>
 
 <style scoped>
-.btn-block {
-  color: #fff;
-  background: rgb(231, 43, 43);
-  transition: all 300ms ease;
+.blockModal {
+  text-align: center;
+  width: 60%;
+  margin: 0 auto;
+}
+
+.blockModal img {
   width: 120px;
+  display: block;
+  margin: 2rem auto;
+}
+
+.btn {
+  color: #fff;
+  margin: 0 1rem;
+  flex: 1;
+}
+
+.btn-block {
+  background: #ff2c2c;
 }
 
 .btn-cancel {
-  color: #fff;
-  background: #838282;
-  transition: all 300ms ease;
-  width: 120px;
+  background: #bbbbbb;
 }
 
-.blockModal img {
-  width: 130px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-td {
-  padding: 0.5rem 1rem;
-  font-weight: 500;
-  width: 10px;
-}
-
-.label,
-.blockModal img {
-  text-align: center;
+.btn-container {
+  display: flex;
+  margin: 2rem;
 }
 </style>
