@@ -6,10 +6,10 @@ import Landing from "./views/Landing.vue";
 import SignUp from "./views/SignUp.vue";
 import Login from "./views/Login.vue";
 import Reset from "./views/Reset.vue";
+import Admin from "./views/Admin.vue";
 import Home from "./views/Home.vue";
 import Dashboard from "./views/Dashboard.vue";
 import Review from "./views/Review.vue";
-import Admin from "./views/Admin.vue";
 
 Vue.use(Router);
 
@@ -20,6 +20,7 @@ export default new Router({
     { path: "/signup", component: SignUp },
     { path: "/login", component: Login },
     { path: "/reset", component: Reset },
+    { path: "/admin", component: Admin },
     {
       path: "/home",
       component: Home,
@@ -52,7 +53,6 @@ export default new Router({
           next("/login");
         }
       }
-    },
-    { path: "/admin", component: Admin }
+    }
   ]
 });
