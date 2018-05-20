@@ -22,14 +22,14 @@
             <td>{{ user.name }}</td>
             <td>{{ user.email }}</td>
             <td>{{ user.mostRecentActivity | date }} </td>
-            <!-- two buttons to fill td below -->
+
             <td class="action">
               <span class="btn btn-notify">Notify</span>
-              <span class="btn btn-block" @click="showModal = true">Block</span>
+              <span class="btn btn-block" @click="showModal = true" :disabled="disabled">Block</span>
               <confirmation
                 :name="user.name"
-                :show="showModal"
-                @close="showModal = false">
+                :show="showModal" @close="showModal = false"
+                >
               </confirmation>
             </td>
           </tr>
@@ -66,12 +66,13 @@ export default {
   methods: {
     mostRecentActivity() {
       this.users.sort((a, b) => (a.date > b.date ? 1 : -1));
-    }
-  },
-  filters: {
-    date(val) {
-      return format(val, "DD MMM YYYY, h:mm A");
-    }
+    },
+    filters: {
+      date(val) {
+        return format(val, "DD MMM YYYY, h:mm A");
+      }
+    },
+    computed: {}
   }
 };
 </script>
@@ -142,5 +143,10 @@ img {
   background: rgb(231, 43, 43);
   margin: 4px;
   color: #fff;
+}
+
+.disabled {
+  color: #969696;
+  background: #e8e8e8;
 }
 </style>
