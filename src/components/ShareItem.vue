@@ -15,12 +15,15 @@
 
 <script>
 import NewOrderModal from "./modals/NewOrderModal.vue";
+import ShareChart from "@/components/ShareChart.vue";
 
 export default {
   name: "ShareItem",
   components: {
-    NewOrderModal
+    NewOrderModal,
+    ShareChart
   },
+
   data() {
     return {
       showModal: false
