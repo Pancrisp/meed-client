@@ -15,21 +15,18 @@
 
 <script>
 import NewOrderModal from "./modals/NewOrderModal.vue";
-import ShareChart from "@/components/ShareChart.vue";
 
 export default {
   name: "ShareItem",
   components: {
-    NewOrderModal,
-    ShareChart
+    NewOrderModal
   },
-
+  props: ["shares"],
   data() {
     return {
       showModal: false
     };
-  },
-  props: ["shares"]
+  }
 };
 </script>
 
@@ -51,4 +48,10 @@ td {
 .btn-buy {
   background: #38be0f;
 }
+
+.btn-chart {
+  background: #a8a8a8;
+  width: auto;
+}
 </style>
+

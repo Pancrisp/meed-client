@@ -17,6 +17,28 @@
       </thead>
       <tbody v-for="share in filterByName" :key="share.symbol">
         <share-item :shares="share"></share-item>
+        <div>
+          <div>
+            {{ share.priceHistory[0].date | date }}
+            {{ share.priceHistory[0].price | currency }}
+          </div>
+          <div>
+            {{ share.priceHistory[1].date | date }}
+            {{ share.priceHistory[1].price | currency }}
+          </div>
+          <div>
+            {{ share.priceHistory[2].date | date }}
+            {{ share.priceHistory[2].price | currency }}
+          </div>
+          <div>
+            {{ share.priceHistory[3].date | date }}
+            {{ share.priceHistory[3].price | currency }}
+          </div>
+          <div>
+            {{ share.priceHistory[4].date | date }}
+            {{ share.priceHistory[4].price | currency }}
+          </div>
+        </div>
       </tbody>
     </table>
   </div>
@@ -24,6 +46,8 @@
 
 <script>
 import axios from "axios";
+import format from "date-fns/format";
+
 import ShareItem from "./ShareItem.vue";
 
 export default {
@@ -52,6 +76,11 @@ export default {
     filterByName() {
       let filter = new RegExp(this.search, "i");
       return this.shares.filter(el => el.name.match(filter));
+    }
+  },
+  filters: {
+    date(val) {
+      return format(val, "DD MMM YYYY");
     }
   },
   created() {
