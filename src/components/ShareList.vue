@@ -17,26 +17,33 @@
       </thead>
       <tbody v-for="share in filterByName" :key="share.symbol">
         <share-item :shares="share"></share-item>
-        <div>
-          <div>
-            {{ share.priceHistory[0].date | date }}
-            {{ share.priceHistory[0].price | currency }}
+        <div class = "price">
+          <div class = "price-heading">
+            <h3>Price History</h3>
           </div>
-          <div>
-            {{ share.priceHistory[1].date | date }}
-            {{ share.priceHistory[1].price | currency }}
+          <div class="price-data">
+            <span>{{ share.priceHistory[0].date | date }}</span>
+            <span>{{ share.priceHistory[0].price | currency }}</span>
           </div>
-          <div>
-            {{ share.priceHistory[2].date | date }}
-            {{ share.priceHistory[2].price | currency }}
+          <hr>
+          <div class="price-data">
+            <span>{{ share.priceHistory[1].date | date }}</span>
+            <span>{{ share.priceHistory[1].price | currency }}</span>
           </div>
-          <div>
-            {{ share.priceHistory[3].date | date }}
-            {{ share.priceHistory[3].price | currency }}
+          <hr>
+          <div class="price-data">
+            <span>{{ share.priceHistory[2].date | date }}</span>
+            <span>{{ share.priceHistory[2].price | currency }}</span>
           </div>
-          <div>
-            {{ share.priceHistory[4].date | date }}
-            {{ share.priceHistory[4].price | currency }}
+          <hr>
+          <div class="price-data">
+            <span>{{ share.priceHistory[3].date | date }}</span>
+            <span>{{ share.priceHistory[3].price | currency }}</span>
+          </div>
+          <hr>
+          <div class="price-data">
+            <span>{{ share.priceHistory[4].date | date }}</span>
+            <span>{{ share.priceHistory[4].price | currency }}</span>
           </div>
         </div>
       </tbody>
@@ -137,5 +144,33 @@ img {
 
 .thead-3 {
   width: 50%;
+}
+
+.price {
+  padding: 1rem;
+}
+
+.price-heading {
+  margin-bottom: 1rem;
+  color: var(--label-color);
+  text-transform: uppercase;
+}
+
+.price-heading h3 {
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.price-data {
+  margin-right: 5rem;
+}
+
+.price-data span {
+  margin: 1rem 2rem 1rem 0;
+}
+
+h3 {
+  display: inline;
+  margin-right: 5rem;
 }
 </style>
