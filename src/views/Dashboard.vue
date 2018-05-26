@@ -14,15 +14,6 @@
             <leaderboard></leaderboard>
           </div>
         </div>
-
-        <div class="card summary-card flex-1">
-          <div>
-            <h3 class="label">Top gainers</h3>
-          </div>
-          <div>
-            <h3 class="label">Top losers</h3>
-          </div>
-        </div>
       </div>
       <ShareList/>
     </main>

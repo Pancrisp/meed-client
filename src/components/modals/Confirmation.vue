@@ -2,7 +2,7 @@
   <modal :show="show" @close="close">
     <div class="blockModal">
       <img src="../../../public/block_icon.svg" alt="blockicon">
-      <h2 class="label">Are you sure you want to block {{ name }}?</h2>
+      <h2 class="label">Are you sure you want to block <b>{{ name }}</b>?</h2>
       <div class="btn-container">
         <input type="button" class="btn btn-cancel" value="Cancel" @click="cancel">
         <input type="button" class="btn btn-block" value="Block" @click="block">
@@ -19,6 +19,9 @@ export default {
   components: {
     Modal
   },
+  data: {
+    disabled: false
+  },
   props: ["name", "show"],
   methods: {
     close() {
@@ -27,8 +30,11 @@ export default {
     cancel() {
       this.close();
     },
+    disabled() {
+      this.$emit("!disabled");
+    },
     block() {
-      this.close();
+      this.disabled();
     }
   }
 };
