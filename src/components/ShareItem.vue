@@ -21,12 +21,12 @@ export default {
   components: {
     NewOrderModal
   },
+  props: ["shares"],
   data() {
     return {
       showModal: false
     };
-  },
-  props: ["shares"]
+  }
 };
 </script>
 
@@ -48,4 +48,10 @@ td {
 .btn-buy {
   background: #38be0f;
 }
+
+.btn-chart {
+  background: #a8a8a8;
+  width: auto;
+}
 </style>
+
